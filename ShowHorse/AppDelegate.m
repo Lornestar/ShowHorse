@@ -7,15 +7,26 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Parse setApplicationId:@"Nj1U5DFrtOfwMlA8bGrAGVqK3ymZe0LsGLo9YGLF"
+                  clientKey:@"pDEbnN7pSQ6h2Ae8vtxJiMQcxGV2QhVSbwL5dpvv"];
+    
+    [PFUser enableAutomaticUser];
+    PFACL *defaultACL = [PFACL ACL];
+    // Optionally enable public read access by default.
+    // [defaultACL setPublicReadAccess:YES];
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+    
+    
     // Override point for customization after application launch.
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
