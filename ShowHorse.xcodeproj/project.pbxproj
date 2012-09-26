@@ -85,6 +85,8 @@
 		B9D5C7F7160EC5C700F8FACB /* Icon_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_512.png; sourceTree = "<group>"; };
 		B9D5C7FC160EC5F000F8FACB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B9D5C7FE160EC61500F8FACB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		B9F541BF1612D50E00D9AAC6 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		B9F541C01612D50E00D9AAC6 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		B9FCE3301611A0BB00C5F3F2 /* GetStarted_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GetStarted_Button.png; sourceTree = "<group>"; };
 		B9FCE3331612304900C5F3F2 /* SplashScreen_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen_Background.png; sourceTree = "<group>"; };
 		B9FCE3341612304900C5F3F2 /* SplashScreen2_Cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen2_Cover.png; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		B9D486C4160EAA3300811B80 /* AddOns */ = {
 			isa = PBXGroup;
 			children = (
+				B9F541BD1612D4EA00D9AAC6 /* MBProgressHUD */,
 				B9D487CB160EAB0500811B80 /* Parse.framework */,
 			);
 			name = AddOns;
@@ -222,6 +225,15 @@
 				B9D5C7F7160EC5C700F8FACB /* Icon_512.png */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		B9F541BD1612D4EA00D9AAC6 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				B9F541BF1612D50E00D9AAC6 /* MBProgressHUD.h */,
+				B9F541C01612D50E00D9AAC6 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		B9FCE3321612300700C5F3F2 /* SplashScreen */ = {
