@@ -7,10 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataHorseSummary.h"
+#import "User.h"
+#import "dataCheckList.h"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) DataHorseSummary *dataHorseSummary;
+@property (nonatomic, strong) DataHorseSummary *dataRiderSummary;
+@property (nonatomic, strong) User *userinfo;
+@property (nonatomic, strong) NSMutableArray *listdataPerformances;
+@property (nonatomic, strong) NSMutableArray *listdataPapers;
+@property (nonatomic, strong) dataCheckList *listdataChecklistRiders;
+@property (nonatomic, strong) dataCheckList *listdataChecklistSaddlery;
+@property (nonatomic, strong) dataCheckList *listdataChecklistGrooming;
+@property (nonatomic, strong) dataCheckList *listdataChecklistStable;
 
+-(void) initRecords;
+-(void) initPerformances;
+-(void) initPapers;
+-(void) initChecklist;
+-(void)logoutVariables;
+-(void) initUser:(NSString*)username userid:(NSString*)userid;
 @end

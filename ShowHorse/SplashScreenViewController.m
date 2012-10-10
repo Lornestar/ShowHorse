@@ -7,6 +7,8 @@
 //
 
 #import "SplashScreenViewController.h"
+#import "User.h"
+#import "AppDelegate.h"
 
 @interface SplashScreenViewController ()
 
@@ -19,6 +21,7 @@
 @synthesize vwSignUp;
 @synthesize txtEmail,txtPassword,btnDoSignUp;
 @synthesize lblHeader;
+@synthesize btnSignin, btnSignup, gstCoverDown;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,10 +37,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    [testObject setObject:@"In ShowHorse" forKey:@"foo"];
-    [testObject save];
+    
     [super viewDidLoad];
+    
+    txtEmail.alpha = 0;
+    txtPassword.alpha = 0;
+    btnDoSignUp.alpha = 0;
+    txtEmail.text = @"lorne@lornestar.com";
+    txtPassword.text = @"1234";
+    gstCoverDown.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,11 +61,12 @@
     [self setTxtPassword:nil];
     [self setBtnDoSignUp:nil];
     [self setLblHeader:nil];
+    [self setBtnSignup:nil];
+    [self setBtnSignin:nil];
+    [self setGstCoverDown:nil];
     [super viewDidUnload];
     
-    txtEmail.alpha = 0;
-    txtPassword.alpha = 0;
-    btnDoSignUp.alpha = 0;
+    
 }
 
 
@@ -76,13 +85,16 @@
     if (buttonid == 0){
         btnDoSignUp.titleLabel.text = @"Sign Up";
         lblHeader.text = @"Sign Up";
+        btnSignin.alpha = 0;
     }
     else{
         btnDoSignUp.titleLabel.text = @"Sign In";
         lblHeader.text = @"Sign In";
+        btnSignup.alpha = 0;
     }
     
     [UIView commitAnimations];
+    gstCoverDown.enabled = YES;
 }
 
 - (IBAction)btnSignUp:(id)sender {
@@ -115,14 +127,20 @@
     
     [txtPassword resignFirstResponder];
     
+    AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+        
     if ([lblHeader.text isEqualToString:@"Sign Up"]){
         //Set username & pwd & check if legit email
         PFUser *user= [PFUser user];
         user.username = txtEmail.text;
         user.password = txtPassword.text;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        hud.labelText = @"Signing Up";
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
             if (!error){
                 //Saved successfully
+                [appdel initUser:user.username userid:user.objectId];
                 [self performSegueWithIdentifier:@"segueHorseImage" sender:nil];
             }
             else{
@@ -130,15 +148,21 @@
                 NSString *theerror = [[error userInfo] objectForKey:@"error"];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:theerror delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
             }
         }];
         
     }
     else{
         //Check if legit username/pwd
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        hud.labelText = @"Signing In";
         [PFUser logInWithUsernameInBackground:txtEmail.text password:txtPassword.text block:^(PFUser *user, NSError *error){
             if (user){
                 //Successful Login
+                sleep(1);
+                [appdel initUser:user.username userid:user.objectId];
                 [self performSegueWithIdentifier:@"segueToolBar" sender:nil];
             }
             else{
@@ -146,7 +170,7 @@
                 NSString *theerror = [[error userInfo] objectForKey:@"error"];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:theerror delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
-
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
             }
             
         }
@@ -158,5 +182,31 @@
 
     
 }
+
+
+- (IBAction)gstCoverDownClick2:(id)sender {
+    UIGestureRecognizer *gsttemp = (UIGestureRecognizer*)sender;
+    CGPoint location = [gsttemp locationInView:self.view];
+    if (location.y < 150){
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.75];
+        [UIView setAnimationDelay:0.25];
+        
+        imgCover.center = CGPointMake(imgCover.center.x, 206);
+        txtEmail.alpha = 0;
+        txtPassword.alpha = 0;
+        lblHeader.alpha = 0;
+        btnDoSignUp.alpha = 0;
+        btnSignup.alpha = 1;
+        btnSignin.alpha = 1;
+        
+        [UIView commitAnimations];
+        gstCoverDown.enabled = NO;
+    }
+    
+    
+}
+
+
 
 @end
