@@ -11,11 +11,12 @@
 #import "Performances.h"
 #import "RegistrationPapers.h"
 #import "dataCheckList.h"
+#import "CalendarDates.h"
 
 
 @implementation AppDelegate
 @synthesize dataHorseSummary,dataRiderSummary,userinfo,listdataPerformances,listdataPapers;
-@synthesize listdataChecklistGrooming, listdataChecklistRiders, listdataChecklistSaddlery, listdataChecklistStable;
+@synthesize listdataChecklistGrooming, listdataChecklistRiders, listdataChecklistSaddlery, listdataChecklistStable,listdataCalendarDates;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -34,7 +35,7 @@
         [self initPerformances];
         [self initPapers];
         [self initChecklist];
-        
+        [self initCalendarDates];        
     }
     
         
@@ -154,6 +155,40 @@
     userinfo.UserID = userid;
 }
 
+-(void) initCalendarDates{
+    //initialize Calendar Dates
+    if (listdataCalendarDates == nil){
+        listdataCalendarDates = [[NSMutableArray alloc]init];
+    }
+PFQuery *query = [PFQuery queryWithClassName:@"User_Calendar_Dates"];
+[query whereKey:@"User_ID" equalTo:userinfo.UserID];
+[query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+    if (!error){
+        if (listdataCalendarDates.count > 0){
+            [listdataCalendarDates removeAllObjects];
+        }
+        //find succeeded
+        for (PFObject* currentrecord in objects){
+            CalendarDates *caltemp = [[CalendarDates alloc]init];
+            
+            NSDate *tempdate = [currentrecord objectForKey:@"EventDate"];
+            NSString *temptitle = [currentrecord objectForKey:@"EventTitle"];
+            NSString *tempdesc = [currentrecord objectForKey:@"EventDescription"];
+            caltemp.EventDate = tempdate;
+            caltemp.EventDescription = tempdesc;
+            caltemp.EventTitle = temptitle;
+            caltemp.listindex = listdataCalendarDates.count;
+            [listdataCalendarDates addObject:caltemp];
+        }
+    }
+    else{
+        NSLog(@"Error:%@ %@", error, [error userInfo]);
+    }
+}];
+
+
+}
+
 -(void)logoutVariables{
     listdataChecklistStable = nil;
     listdataChecklistSaddlery = nil;
@@ -162,5 +197,6 @@
     userinfo = nil;
     listdataPapers = nil;
     listdataPerformances = nil;
+    listdataCalendarDates = nil;
 }
 @end

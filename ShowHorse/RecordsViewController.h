@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "UAModalPanel.h"
 #import "Performances.h"
-@class DataHorseSummary, DataPerformanceSummary, DataRegPapers , MGScrollView, MGBox;;
+@class DataHorseSummary, DataPerformanceSummary, DataRegPapers , MGScrollView, MGBox;
 
 
 @interface RecordsViewController : UIViewController< UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UAModalPanelDelegate>{

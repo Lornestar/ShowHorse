@@ -24,6 +24,7 @@
 @property (nonatomic, strong) dataCheckList *listdataChecklistSaddlery;
 @property (nonatomic, strong) dataCheckList *listdataChecklistGrooming;
 @property (nonatomic, strong) dataCheckList *listdataChecklistStable;
+@property (nonatomic, strong) NSMutableArray *listdataCalendarDates;
 
 -(void) initRecords;
 -(void) initPerformances;
@@ -31,4 +32,5 @@
 -(void) initChecklist;
 -(void)logoutVariables;
 -(void) initUser:(NSString*)username userid:(NSString*)userid;
+-(void) initCalendarDates;
 @end

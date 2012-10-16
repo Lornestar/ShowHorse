@@ -30,7 +30,7 @@
     [appdel initRecords];
     [appdel initPerformances];
     [appdel initPapers];
-    
+    [appdel initCalendarDates];
 }
 
 - (void)viewDidLoad
