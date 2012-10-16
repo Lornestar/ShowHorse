@@ -69,10 +69,15 @@
     
 }
 
+-(void)opencoverfinished{
+    [txtEmail becomeFirstResponder];
+}
 
 
 - (void)opencover:(int)buttonid{
-    [UIView beginAnimations:nil context:nil];
+    [UIView beginAnimations:@"opencover" context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(opencoverfinished)];
     [UIView setAnimationDuration:0.75];
     [UIView setAnimationDelay:0.25];
     
@@ -81,6 +86,7 @@
     txtPassword.alpha = 1;
     //btnDoSignUp.alpha = 1;
     lblHeader.alpha = 1;
+    
     
     if (buttonid == 0){
         btnDoSignUp.titleLabel.text = @"Sign Up";
@@ -95,6 +101,9 @@
     
     [UIView commitAnimations];
     gstCoverDown.enabled = YES;
+    
+    
+    
 }
 
 - (IBAction)btnSignUp:(id)sender {
@@ -128,7 +137,7 @@
     [txtPassword resignFirstResponder];
     
     AppDelegate *appdel = [UIApplication sharedApplication].delegate;
-        
+    
     if ([lblHeader.text isEqualToString:@"Sign Up"]){
         //Set username & pwd & check if legit email
         PFUser *user= [PFUser user];
@@ -179,7 +188,7 @@
         
         
     }
-
+    
     
 }
 
@@ -200,6 +209,8 @@
         btnSignup.alpha = 1;
         btnSignin.alpha = 1;
         
+        [txtEmail resignFirstResponder];
+        [txtPassword resignFirstResponder];
         [UIView commitAnimations];
         gstCoverDown.enabled = NO;
     }

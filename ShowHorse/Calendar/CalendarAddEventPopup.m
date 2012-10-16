@@ -12,9 +12,9 @@
 #define BLACK_BAR_COMPONENTS				{ 0.22, 0.22, 0.22, 1.0, 0.07, 0.07, 0.07, 1.0 }
 
 @implementation CalendarAddEventPopup
-@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar;
+@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar,btnCreateEvent;
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj
 {
     if ((self = [super initWithFrame:frame])) {
 		
@@ -30,18 +30,26 @@
         [[NSBundle mainBundle]  loadNibNamed:@"CalendarAddEvent" owner:self options:nil];
         [self.contentView addSubview:vwCalendarAddEvent];
         [txtEventTitle becomeFirstResponder];
+        
+        if (calendarobj){
+            globaldatacalendar = calendarobj;
+            txtEventTitle.text = calendarobj.EventTitle;
+            txtEventDescription.text = calendarobj.EventDescription;
+            txtEventDate.text = [NSString stringWithFormat:@"%@", calendarobj.EventDate];
+            btnCreateEvent.titleLabel.text = @"Save Event";
+        }
     }
     return self;
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 - (IBAction)btnCreateEvent_Clicked:(id)sender {
     CalendarDates *tempcal;
@@ -63,5 +71,5 @@
         // Or perhaps someone is listening for notifications
     }
 }
-    
+
 @end

@@ -35,10 +35,10 @@
         [self initPerformances];
         [self initPapers];
         [self initChecklist];
-        [self initCalendarDates];        
+        [self initCalendarDates];
     }
     
-        
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -51,7 +51,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -160,33 +160,34 @@
     if (listdataCalendarDates == nil){
         listdataCalendarDates = [[NSMutableArray alloc]init];
     }
-PFQuery *query = [PFQuery queryWithClassName:@"User_Calendar_Dates"];
-[query whereKey:@"User_ID" equalTo:userinfo.UserID];
-[query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-    if (!error){
-        if (listdataCalendarDates.count > 0){
-            [listdataCalendarDates removeAllObjects];
+    PFQuery *query = [PFQuery queryWithClassName:@"User_Calendar_Dates"];
+    [query whereKey:@"User_ID" equalTo:userinfo.UserID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error){
+            if (listdataCalendarDates.count > 0){
+                [listdataCalendarDates removeAllObjects];
+            }
+            //find succeeded
+            for (PFObject* currentrecord in objects){
+                CalendarDates *caltemp = [[CalendarDates alloc]init];
+                
+                NSDate *tempdate = [currentrecord objectForKey:@"EventDate"];
+                NSString *temptitle = [currentrecord objectForKey:@"EventTitle"];
+                NSString *tempdesc = [currentrecord objectForKey:@"EventDescription"];
+                caltemp.EventDate = tempdate;
+                caltemp.EventDescription = tempdesc;
+                caltemp.EventTitle = temptitle;
+                caltemp.listindex = listdataCalendarDates.count;
+                caltemp.CalendarDatesObject =currentrecord;
+                [listdataCalendarDates addObject:caltemp];
+            }
         }
-        //find succeeded
-        for (PFObject* currentrecord in objects){
-            CalendarDates *caltemp = [[CalendarDates alloc]init];
-            
-            NSDate *tempdate = [currentrecord objectForKey:@"EventDate"];
-            NSString *temptitle = [currentrecord objectForKey:@"EventTitle"];
-            NSString *tempdesc = [currentrecord objectForKey:@"EventDescription"];
-            caltemp.EventDate = tempdate;
-            caltemp.EventDescription = tempdesc;
-            caltemp.EventTitle = temptitle;
-            caltemp.listindex = listdataCalendarDates.count;
-            [listdataCalendarDates addObject:caltemp];
+        else{
+            NSLog(@"Error:%@ %@", error, [error userInfo]);
         }
-    }
-    else{
-        NSLog(@"Error:%@ %@", error, [error userInfo]);
-    }
-}];
-
-
+    }];
+    
+    
 }
 
 -(void)logoutVariables{

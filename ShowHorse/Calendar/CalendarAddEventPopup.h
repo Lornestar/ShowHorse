@@ -19,8 +19,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *txtEventDescription;
 @property (strong, nonatomic) CalendarDates *globaldatacalendar;
 - (IBAction)btnCreateEvent_Clicked:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnCreateEvent;
 
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title;
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj;
 
 @end

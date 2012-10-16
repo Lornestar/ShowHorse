@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+@class DataCalendarDates;
 
-@interface CalendarListViewController : UIViewController
+@interface CalendarListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, retain) NSArray *tableData;
+@property (strong, nonatomic) AppDelegate *appdel;
 
 @end

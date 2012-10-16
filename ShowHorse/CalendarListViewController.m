@@ -7,12 +7,17 @@
 //
 
 #import "CalendarListViewController.h"
+#import "CalendarDates.h"
+#import "DataCalendarDates.h"
+#import "CalendarAddEventPopup.h"
+#import "DataCalendarDates.h"
 
 @interface CalendarListViewController ()
-
+@property (nonatomic,strong) DataCalendarDates *datacalendardates;
 @end
 
 @implementation CalendarListViewController
+@synthesize tableData, appdel,datacalendardates;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,7 +36,84 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    appdel = [UIApplication sharedApplication].delegate;
+    tableData = appdel.listdataCalendarDates;
+    
+}
 
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+	return [tableData count];
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"mycell";
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil){ cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] ;
+    }
+    
+    CalendarDates *tempdate = [tableData objectAtIndex:indexPath.row];
+    UILabel *lbltitle = (UILabel*)[cell.contentView viewWithTag:1];
+    lbltitle.text = tempdate.EventTitle;
+    UILabel *lbldesc = (UILabel*)[cell.contentView viewWithTag:2];
+    lbldesc.text = tempdate.EventDescription;
+    UILabel *lbldate = (UILabel*)[cell.contentView viewWithTag:3];
+    lbldate.text = [NSString stringWithFormat:@"%@", tempdate.EventDate];
+    return cell;
+	
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    CalendarAddEventPopup *cldpopup = [[CalendarAddEventPopup alloc] initWithFrame:self.view.bounds  title:@"Add Event" calendarobj:[tableData objectAtIndex:indexPath.row]];
+    
+    
+    cldpopup.onClosePressed = ^(UAModalPanel* panel) {
+        // [panel hide];
+        [panel hideWithOnComplete:^(BOOL finished) {
+            [panel removeFromSuperview];
+            [self.navigationController setNavigationBarHidden:NO  animated:YES];
+            
+        }];
+        UADebugLog(@"onClosePressed block called from panel: %@", modalPanel);
+    };
+    
+    ///////////////////////////////////////////
+    //   Panel is a reference to the modalPanel
+    cldpopup.onActionPressed = ^(UAModalPanel* panel) {
+        UADebugLog(@"onActionPressed block called from panel: %@", modalPanel);
+        NSLog(@"Button Pressed");
+    };
+    
+    UADebugLog(@"UAModalView will display using blocks: %@", modalPanel);
+    
+    cldpopup.delegate = self;
+    
+    ///////////////////////////////////
+    [self.navigationController setNavigationBarHidden:YES  animated:YES];
+    // Add the panel to our view
+    [self.view addSubview:cldpopup];
+    
+    ///////////////////////////////////
+    // Show the panel from the center of the button that was pressed
+    [cldpopup showFromPoint:CGPointMake(0, 0)];
+}
+
+
+-(void)AddCalendars:(CalendarDates*)caltemp{
+    
+    //adding image for Reg Papers
+    datacalendardates = [[DataCalendarDates alloc]init];
+    if (caltemp.CalendarDatesObject){
+        //Existing object
+        caltemp = [datacalendardates AddCalendarDates:caltemp];
+        
+    }
+    else{
+        //New one
+        caltemp = [datacalendardates AddCalendarDates:caltemp];
+    }
+    [appdel.listdataCalendarDates setObject:caltemp atIndexedSubscript:caltemp.listindex-1];
     
 }
 

@@ -4,42 +4,29 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ShowHorse/CalendarViewController.m"
-         timestampString = "371780804.222037"
+         filePath = "ShowHorse/AddOns/TapkuLibrary/TKCalendarMonthView.m"
+         timestampString = "372102163.988652"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145"
-         landmarkName = "-generateRandomDataForStartDate:endDate:"
+         startingLineNumber = "431"
+         endingLineNumber = "431"
+         landmarkName = "-dateSelected"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ShowHorse/CalendarViewController.m"
-         timestampString = "371780872.239583"
+         filePath = "ShowHorse/AddOns/TapkuLibrary/TKCalendarMonthView.m"
+         timestampString = "372102435.532308"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ShowHorse/CalendarViewController.m"
-         timestampString = "371780879.321179"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
-         landmarkName = "-tableView:numberOfRowsInSection:"
+         startingLineNumber = "429"
+         endingLineNumber = "429"
+         landmarkName = "-dateSelected"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
