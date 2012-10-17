@@ -10,6 +10,7 @@
 #import "OverlayViewController.h"
 #import "CheckList.h"
 
+
 @interface CheckListAddItemPopup : UATitledModalPanel<OverlayViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *txtItemName;
 @property (weak, nonatomic) IBOutlet UIButton *btnCreateItem;

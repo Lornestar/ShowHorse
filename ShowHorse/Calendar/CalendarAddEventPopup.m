@@ -8,11 +8,15 @@
 
 #import "CalendarAddEventPopup.h"
 #import "CalendarDates.h"
+#import "CalendarViewController.h"
 
-#define BLACK_BAR_COMPONENTS				{ 0.22, 0.22, 0.22, 1.0, 0.07, 0.07, 0.07, 1.0 }
+#define BLACK_BAR_COMPONENTS		{ 0.22, 0.22, 0.22, 1.0, 0.07, 0.07, 0.07, 1.0 }
+
+
 
 @implementation CalendarAddEventPopup
-@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar,btnCreateEvent;
+@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar,btnCreateEvent,vwdatepicker,chosendate;
+
 
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj
 {
@@ -30,6 +34,7 @@
         [[NSBundle mainBundle]  loadNibNamed:@"CalendarAddEvent" owner:self options:nil];
         [self.contentView addSubview:vwCalendarAddEvent];
         [txtEventTitle becomeFirstResponder];
+        chosendate = [NSDate date];
         
         if (calendarobj){
             globaldatacalendar = calendarobj;
@@ -63,13 +68,46 @@
     
     tempcal.EventTitle = txtEventTitle.text;
     tempcal.EventDescription = txtEventDescription.text;
-    tempcal.EventDate = [NSDate date];
+    tempcal.EventDate = chosendate;
     
     if ([delegate respondsToSelector:@selector(AddCalendars:)]) {
         [delegate performSelector:@selector(AddCalendars:) withObject:tempcal];
         [self hide];
         // Or perhaps someone is listening for notifications
     }
+}
+
+- (IBAction)txtEventDateClicked:(id)sender {
+    [vwCalendarAddEvent endEditing:YES];
+    [sender resignFirstResponder];
+    CalendarViewController *cvc = (CalendarViewController*)delegate;
+    [cvc presentSemiModalViewController:vwdatepicker];
+}
+
+#pragma mark -
+#pragma mark Date Picker Delegate
+
+-(void)datePickerSetDate:(TDDatePickerController*)viewController {
+    CalendarViewController *cvc = (CalendarViewController*)delegate;
+	[cvc dismissSemiModalViewController:vwdatepicker];
+    
+    NSDate *d = viewController.datePicker.date;
+    //TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    //d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	txtEventDate.text = [NSString stringWithFormat:@"%@",d];
+    chosendate = d;
+}
+
+-(void)datePickerClearDate:(TDDatePickerController*)viewController {
+    CalendarViewController *cvc = (CalendarViewController*)delegate;
+	[cvc dismissSemiModalViewController:vwdatepicker];
+    
+	//selectedDate = nil;
+}
+
+-(void)datePickerCancel:(TDDatePickerController*)viewController {
+    CalendarViewController *cvc = (CalendarViewController*)delegate;
+	[cvc dismissSemiModalViewController:vwdatepicker];
 }
 
 @end

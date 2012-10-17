@@ -186,9 +186,10 @@
         [self.dataArray addObject:[NSNumber numberWithBool:NO]];
 		
 		
-		TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		/*TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		info.day++;
-		d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];*/
+        d = [d addTimeInterval:60*60*24];
         
         counter +=1;
 		if([d compare:end]==NSOrderedDescending) break;

@@ -47,6 +47,10 @@
 		B928150B162E350B00140E7C /* CheckListAddItemPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = B928150A162E350B00140E7C /* CheckListAddItemPopup.m */; };
 		B928150D162E35ED00140E7C /* OverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B928150C162E35ED00140E7C /* OverlayViewController.xib */; };
 		B928150F162E36D900140E7C /* AddCheckListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B928150E162E36D900140E7C /* AddCheckListItem.xib */; };
+		B928151D162F5DEA00140E7C /* TDDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9281516162F5DEA00140E7C /* TDDatePickerController.m */; };
+		B928151E162F5DEA00140E7C /* TDDatePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9281517162F5DEA00140E7C /* TDDatePickerController.xib */; };
+		B928151F162F5DEA00140E7C /* TDSemiModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B928151A162F5DEA00140E7C /* TDSemiModalViewController.m */; };
+		B9281520162F5DEA00140E7C /* UIViewController+TDSemiModalExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B928151C162F5DEA00140E7C /* UIViewController+TDSemiModalExtension.m */; };
 		B92880021624E3210070A7C1 /* AddItem.png in Resources */ = {isa = PBXBuildFile; fileRef = B9287FFB1624E3210070A7C1 /* AddItem.png */; };
 		B92880031624E3210070A7C1 /* GroomingKit_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B9287FFC1624E3210070A7C1 /* GroomingKit_Button.png */; };
 		B92880041624E3210070A7C1 /* HorseShoe.png in Resources */ = {isa = PBXBuildFile; fileRef = B9287FFD1624E3210070A7C1 /* HorseShoe.png */; };
@@ -237,6 +241,14 @@
 		B928150A162E350B00140E7C /* CheckListAddItemPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListAddItemPopup.m; sourceTree = "<group>"; };
 		B928150C162E35ED00140E7C /* OverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayViewController.xib; sourceTree = "<group>"; };
 		B928150E162E36D900140E7C /* AddCheckListItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCheckListItem.xib; path = Calendar/AddCheckListItem.xib; sourceTree = "<group>"; };
+		B9281515162F5DEA00140E7C /* TDDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDDatePickerController.h; sourceTree = "<group>"; };
+		B9281516162F5DEA00140E7C /* TDDatePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDDatePickerController.m; sourceTree = "<group>"; };
+		B9281517162F5DEA00140E7C /* TDDatePickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDDatePickerController.xib; sourceTree = "<group>"; };
+		B9281518162F5DEA00140E7C /* TDSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSemiModal.h; sourceTree = "<group>"; };
+		B9281519162F5DEA00140E7C /* TDSemiModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSemiModalViewController.h; sourceTree = "<group>"; };
+		B928151A162F5DEA00140E7C /* TDSemiModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSemiModalViewController.m; sourceTree = "<group>"; };
+		B928151B162F5DEA00140E7C /* UIViewController+TDSemiModalExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TDSemiModalExtension.h"; sourceTree = "<group>"; };
+		B928151C162F5DEA00140E7C /* UIViewController+TDSemiModalExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TDSemiModalExtension.m"; sourceTree = "<group>"; };
 		B9287FFB1624E3210070A7C1 /* AddItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddItem.png; sourceTree = "<group>"; };
 		B9287FFC1624E3210070A7C1 /* GroomingKit_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GroomingKit_Button.png; sourceTree = "<group>"; };
 		B9287FFD1624E3210070A7C1 /* HorseShoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HorseShoe.png; sourceTree = "<group>"; };
@@ -596,6 +608,21 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		B9281514162F5DEA00140E7C /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B9281515162F5DEA00140E7C /* TDDatePickerController.h */,
+				B9281516162F5DEA00140E7C /* TDDatePickerController.m */,
+				B9281517162F5DEA00140E7C /* TDDatePickerController.xib */,
+				B9281518162F5DEA00140E7C /* TDSemiModal.h */,
+				B9281519162F5DEA00140E7C /* TDSemiModalViewController.h */,
+				B928151A162F5DEA00140E7C /* TDSemiModalViewController.m */,
+				B928151B162F5DEA00140E7C /* UIViewController+TDSemiModalExtension.h */,
+				B928151C162F5DEA00140E7C /* UIViewController+TDSemiModalExtension.m */,
+			);
+			path = DatePicker;
+			sourceTree = "<group>";
+		};
 		B9287FFA1624E3210070A7C1 /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
@@ -844,6 +871,7 @@
 		B9D486C4160EAA3300811B80 /* AddOns */ = {
 			isa = PBXGroup;
 			children = (
+				B9281514162F5DEA00140E7C /* DatePicker */,
 				B932FE7D16268A6400FC1324 /* TapkuLibrary */,
 				B922BE1E1620EA6400A7B735 /* MGBox */,
 				B91D4EB1161CBA3400120FA3 /* UAModalPanel */,
@@ -1034,6 +1062,7 @@
 				B9281507162E233300140E7C /* ResetChecklist.png in Resources */,
 				B928150D162E35ED00140E7C /* OverlayViewController.xib in Resources */,
 				B928150F162E36D900140E7C /* AddCheckListItem.xib in Resources */,
+				B928151E162F5DEA00140E7C /* TDDatePickerController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1134,6 +1163,9 @@
 				B932FF2116269D2800FC1324 /* CalendarDates.m in Sources */,
 				B9F64C1B16279149009CC869 /* DataCalendarDates.m in Sources */,
 				B928150B162E350B00140E7C /* CheckListAddItemPopup.m in Sources */,
+				B928151D162F5DEA00140E7C /* TDDatePickerController.m in Sources */,
+				B928151F162F5DEA00140E7C /* TDSemiModalViewController.m in Sources */,
+				B9281520162F5DEA00140E7C /* UIViewController+TDSemiModalExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
