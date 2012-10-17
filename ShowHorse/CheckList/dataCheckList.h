@@ -12,4 +12,5 @@
 
 -(id)init:(int)type;
 @property (nonatomic, strong) NSMutableArray *list;
+-(CheckList*)AddCheckListItems:(CheckList*)CheckListObject CurrentSelection:(int)CurrentSelection;
 @end

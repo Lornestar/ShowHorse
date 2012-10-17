@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface CheckList : NSObject
 @property (nonatomic, strong) NSString *theLabel;
 @property (nonatomic) int listindex;
 @property (nonatomic) BOOL ischecked;
+@property (nonatomic, strong) PFObject *checklistobject;
 @end

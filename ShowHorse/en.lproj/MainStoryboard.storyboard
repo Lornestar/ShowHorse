@@ -108,6 +108,21 @@
                                                 <action selector="btnAddItemClicked:" destination="2" eventType="touchUpInside" id="b88-vP-kgf"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h8T-Bm-JGG">
+                                            <rect key="frame" x="157" y="3" width="120" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" backgroundImage="ResetChecklist.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="btnresetChecklistClicked:" destination="2" eventType="touchUpInside" id="7YH-hU-s3X"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <prototypes>
@@ -831,6 +846,7 @@
         <image name="HorseSummary.png" width="609" height="185"/>
         <image name="PerformanceSummary.png" width="609" height="185"/>
         <image name="RegistrationPapers.png" width="609" height="185"/>
+        <image name="ResetChecklist.png" width="223" height="33"/>
         <image name="RiderSummary.png" width="609" height="185"/>
         <image name="Rider_Button.png" width="609" height="185"/>
         <image name="Saddlery_Button.png" width="609" height="185"/>
@@ -846,93 +862,6 @@
         <image name="ToolBar_Settings.png" width="30" height="30"/>
         <image name="additem_background.png" width="604" height="61"/>
     </resources>
-    <classes>
-        <class className="CalendarListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarListViewController.h"/>
-        </class>
-        <class className="CalendarViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="AddEvent_Clicked:"/>
-                <relationship kind="outlet" name="tblview" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="CheckListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CheckListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnAddItemClicked:"/>
-                <relationship kind="action" name="btnGroomingClicked:"/>
-                <relationship kind="action" name="btnRiderClicked:"/>
-                <relationship kind="action" name="btnSaddleryClicked:"/>
-                <relationship kind="action" name="btnStableClicked:"/>
-                <relationship kind="outlet" name="btnGroomingKit" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnRider" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnSaddlery" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnStable" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tblview" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="vwAddItembackground" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="MGScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MGScrollView.h"/>
-        </class>
-        <class className="RecordsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnEditDone:"/>
-                <relationship kind="action" name="btnHorseSummary:"/>
-                <relationship kind="action" name="btnPerformanceClicked:"/>
-                <relationship kind="action" name="btnPerformanceSummary:"/>
-                <relationship kind="action" name="btnRegistrationPapers:"/>
-                <relationship kind="action" name="btnRiderSummary:"/>
-                <relationship kind="action" name="txtEditFieldDone:"/>
-                <relationship kind="outlet" name="btnAddPerformance" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnHorseSummary" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnPerformanceSummary" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnRegistrationPapers" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnRiderSummary" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollPapers" candidateClass="MGScrollView"/>
-                <relationship kind="outlet" name="tblview" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblviewperformance" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="txtEditField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="vwRegPapers" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="RootTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootTabBarController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tbRoot" candidateClass="UITabBar"/>
-            </relationships>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnLogoutClicked:"/>
-                <relationship kind="outlet" name="lblUsername" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SplashScreenViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashScreenViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backgroundtouch:"/>
-                <relationship kind="action" name="btnDoSignUp:"/>
-                <relationship kind="action" name="btnSignIn:"/>
-                <relationship kind="action" name="btnSignUp:"/>
-                <relationship kind="action" name="gstCoverDownClick2:"/>
-                <relationship kind="action" name="txtEmailNext:"/>
-                <relationship kind="action" name="txtPasswordGo:"/>
-                <relationship kind="outlet" name="btnDoSignUp" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnSignin" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnSignup" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="gstCoverDown" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="imgCover" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblHeader" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="txtEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="vwSignUp" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

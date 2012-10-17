@@ -17,7 +17,6 @@
 		B91BDB341621411B006A472F /* RegPapers.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91BDB331621411B006A472F /* RegPapers.xib */; };
 		B91BDB3616214EF1006A472F /* Add_Photo_Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BDB3516214EF1006A472F /* Add_Photo_Empty.png */; };
 		B91BDB3D16217129006A472F /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91BDB3C16217129006A472F /* OverlayViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B91BDB3F1621713E006A472F /* OverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91BDB3E1621713E006A472F /* OverlayViewController.xib */; };
 		B91D4EE5161CBA3400120FA3 /* UIView+JMNoise.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D4EC7161CBA3400120FA3 /* UIView+JMNoise.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B91D4EE6161CBA3400120FA3 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = B91D4EC9161CBA3400120FA3 /* close.png */; };
 		B91D4EE7161CBA3400120FA3 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91D4ECA161CBA3400120FA3 /* close@2x.png */; };
@@ -44,6 +43,10 @@
 		B922BE3E1620EA6400A7B735 /* MGTableBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B922BE331620EA6400A7B735 /* MGTableBox.m */; };
 		B922BE3F1620EA6400A7B735 /* MGTableBoxStyled.m in Sources */ = {isa = PBXBuildFile; fileRef = B922BE351620EA6400A7B735 /* MGTableBoxStyled.m */; };
 		B922BE421620F07D00A7B735 /* PhotoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B922BE411620F07D00A7B735 /* PhotoBox.m */; };
+		B9281507162E233300140E7C /* ResetChecklist.png in Resources */ = {isa = PBXBuildFile; fileRef = B9281506162E233300140E7C /* ResetChecklist.png */; };
+		B928150B162E350B00140E7C /* CheckListAddItemPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = B928150A162E350B00140E7C /* CheckListAddItemPopup.m */; };
+		B928150D162E35ED00140E7C /* OverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B928150C162E35ED00140E7C /* OverlayViewController.xib */; };
+		B928150F162E36D900140E7C /* AddCheckListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B928150E162E36D900140E7C /* AddCheckListItem.xib */; };
 		B92880021624E3210070A7C1 /* AddItem.png in Resources */ = {isa = PBXBuildFile; fileRef = B9287FFB1624E3210070A7C1 /* AddItem.png */; };
 		B92880031624E3210070A7C1 /* GroomingKit_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B9287FFC1624E3210070A7C1 /* GroomingKit_Button.png */; };
 		B92880041624E3210070A7C1 /* HorseShoe.png in Resources */ = {isa = PBXBuildFile; fileRef = B9287FFD1624E3210070A7C1 /* HorseShoe.png */; };
@@ -182,7 +185,6 @@
 		B91BDB3516214EF1006A472F /* Add_Photo_Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Add_Photo_Empty.png; sourceTree = "<group>"; };
 		B91BDB3B16217129006A472F /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
 		B91BDB3C16217129006A472F /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
-		B91BDB3E1621713E006A472F /* OverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OverlayViewController.xib; path = "../../../../../../Dropbox/Show Horse/Records/OverlayViewController.xib"; sourceTree = "<group>"; };
 		B91D4EC6161CBA3400120FA3 /* UIView+JMNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JMNoise.h"; sourceTree = "<group>"; };
 		B91D4EC7161CBA3400120FA3 /* UIView+JMNoise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JMNoise.m"; sourceTree = "<group>"; };
 		B91D4EC9161CBA3400120FA3 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
@@ -230,6 +232,11 @@
 		B922BE351620EA6400A7B735 /* MGTableBoxStyled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTableBoxStyled.m; sourceTree = "<group>"; };
 		B922BE401620F07D00A7B735 /* PhotoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBox.h; sourceTree = "<group>"; };
 		B922BE411620F07D00A7B735 /* PhotoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBox.m; sourceTree = "<group>"; };
+		B9281506162E233300140E7C /* ResetChecklist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResetChecklist.png; sourceTree = "<group>"; };
+		B9281509162E350B00140E7C /* CheckListAddItemPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListAddItemPopup.h; sourceTree = "<group>"; };
+		B928150A162E350B00140E7C /* CheckListAddItemPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListAddItemPopup.m; sourceTree = "<group>"; };
+		B928150C162E35ED00140E7C /* OverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayViewController.xib; sourceTree = "<group>"; };
+		B928150E162E36D900140E7C /* AddCheckListItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCheckListItem.xib; path = Calendar/AddCheckListItem.xib; sourceTree = "<group>"; };
 		B9287FFB1624E3210070A7C1 /* AddItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddItem.png; sourceTree = "<group>"; };
 		B9287FFC1624E3210070A7C1 /* GroomingKit_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GroomingKit_Button.png; sourceTree = "<group>"; };
 		B9287FFD1624E3210070A7C1 /* HorseShoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HorseShoe.png; sourceTree = "<group>"; };
@@ -547,8 +554,8 @@
 		B922BE1E1620EA6400A7B735 /* MGBox */ = {
 			isa = PBXGroup;
 			children = (
+				B928150C162E35ED00140E7C /* OverlayViewController.xib */,
 				B905EFF316217DA000F60820 /* tick.aiff */,
-				B91BDB3E1621713E006A472F /* OverlayViewController.xib */,
 				B91BDB3B16217129006A472F /* OverlayViewController.h */,
 				B91BDB3C16217129006A472F /* OverlayViewController.m */,
 				B91BDB3516214EF1006A472F /* Add_Photo_Empty.png */,
@@ -592,6 +599,7 @@
 		B9287FFA1624E3210070A7C1 /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
+				B9281506162E233300140E7C /* ResetChecklist.png */,
 				B9287FFB1624E3210070A7C1 /* AddItem.png */,
 				B92880091624EFBC0070A7C1 /* additem_background.png */,
 				B9287FFC1624E3210070A7C1 /* GroomingKit_Button.png */,
@@ -609,8 +617,11 @@
 			children = (
 				B928800C1624F6300070A7C1 /* CheckList.h */,
 				B928800D1624F6300070A7C1 /* CheckList.m */,
+				B928150E162E36D900140E7C /* AddCheckListItem.xib */,
 				B928800F1624F72D0070A7C1 /* dataCheckList.h */,
 				B92880101624F72D0070A7C1 /* dataCheckList.m */,
+				B9281509162E350B00140E7C /* CheckListAddItemPopup.h */,
+				B928150A162E350B00140E7C /* CheckListAddItemPopup.m */,
 			);
 			name = CheckList;
 			sourceTree = "<group>";
@@ -1007,7 +1018,6 @@
 				B91BDB3216213B0E006A472F /* add.png in Resources */,
 				B91BDB341621411B006A472F /* RegPapers.xib in Resources */,
 				B91BDB3616214EF1006A472F /* Add_Photo_Empty.png in Resources */,
-				B91BDB3F1621713E006A472F /* OverlayViewController.xib in Resources */,
 				B905EFF416217DA000F60820 /* tick.aiff in Resources */,
 				B92880021624E3210070A7C1 /* AddItem.png in Resources */,
 				B92880031624E3210070A7C1 /* GroomingKit_Button.png in Resources */,
@@ -1021,6 +1031,9 @@
 				B92881BB162648770070A7C1 /* AllEvents_button.png in Resources */,
 				B932FF1816268FDE00FC1324 /* TapkuLibrary.bundle in Resources */,
 				B932FF1E162698F100FC1324 /* CalendarAddEvent.xib in Resources */,
+				B9281507162E233300140E7C /* ResetChecklist.png in Resources */,
+				B928150D162E35ED00140E7C /* OverlayViewController.xib in Resources */,
+				B928150F162E36D900140E7C /* AddCheckListItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1120,6 +1133,7 @@
 				B932FF1C1626981300FC1324 /* CalendarAddEventPopup.m in Sources */,
 				B932FF2116269D2800FC1324 /* CalendarDates.m in Sources */,
 				B9F64C1B16279149009CC869 /* DataCalendarDates.m in Sources */,
+				B928150B162E350B00140E7C /* CheckListAddItemPopup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

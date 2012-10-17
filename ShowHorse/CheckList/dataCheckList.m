@@ -8,6 +8,8 @@
 
 #import "dataCheckList.h"
 #import "CheckList.h"
+#import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation dataCheckList
 @synthesize list;
@@ -31,8 +33,84 @@
         default:
             break;
     }
+    
+    AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+    PFQuery *query = [PFQuery queryWithClassName:@"User_CheckList"];
+    [query whereKey:@"User_ID" equalTo:appdel.userinfo.UserID];
+    [query whereKey:@"CurrentSelection" equalTo:[NSNumber numberWithInt:type]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error){
+            //find succeeded
+            for (PFObject* currentrecord in objects){
+                CheckList *caltemp = [[CheckList alloc]init];
+                
+                NSString *tempthelabel = [currentrecord objectForKey:@"theLabel"];
+                caltemp.theLabel = tempthelabel;
+                caltemp.listindex = list.count;
+                caltemp.checklistobject =currentrecord;
+                [list addObject:caltemp];
+            }
+        }
+        else{
+            NSLog(@"Error:%@ %@", error, [error userInfo]);
+        }
+    }];
     return self;
 }
+
+-(CheckList*)AddCheckListItems:(CheckList*)CheckListObject CurrentSelection:(int)CurrentSelection{
+    //Add new CheckList Item
+    
+    AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+    
+    PFObject *checklistobject;
+    if (CheckListObject.checklistobject.objectId.length > 0){
+        //existing object
+        checklistobject = CheckListObject.checklistobject;
+        switch (CurrentSelection) {
+            case 1:[appdel.listdataChecklistRiders.list setObject:CheckListObject atIndexedSubscript:CheckListObject.listindex];
+                break;
+            case 2:[appdel.listdataChecklistSaddlery.list setObject:CheckListObject atIndexedSubscript:CheckListObject.listindex];
+                break;
+            case 3:[appdel.listdataChecklistGrooming.list setObject:CheckListObject atIndexedSubscript:CheckListObject.listindex];
+                break;
+            case 4:[appdel.listdataChecklistStable.list setObject:CheckListObject atIndexedSubscript:CheckListObject.listindex];
+                break;
+        }
+    }
+    else{
+        checklistobject = [PFObject objectWithClassName:@"User_CheckList"];
+        switch (CurrentSelection) {
+            case 1:
+                CheckListObject.listindex = appdel.listdataChecklistRiders.list.count;
+                [appdel.listdataChecklistRiders.list addObject:CheckListObject];
+                break;
+            case 2:CheckListObject.listindex = appdel.listdataChecklistSaddlery.list.count;
+                [appdel.listdataChecklistSaddlery.list addObject:CheckListObject];
+                break;
+            case 3:CheckListObject.listindex = appdel.listdataChecklistGrooming.list.count;
+                [appdel.listdataChecklistGrooming.list addObject:CheckListObject];
+                break;
+            case 4:CheckListObject.listindex = appdel.listdataChecklistStable.list.count;
+                [appdel.listdataChecklistStable.list addObject:CheckListObject];
+                break;
+        }
+    }
+    
+    
+    //Add to d
+    [checklistobject setObject:CheckListObject.theLabel forKey:@"theLabel"];
+    [checklistobject setObject:appdel.userinfo.UserID forKey:@"User_ID"];
+    [checklistobject setObject:[NSNumber numberWithInt:CurrentSelection] forKey:@"CurrentSelection"];
+    [checklistobject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (!error){
+            CheckListObject.checklistobject = checklistobject;
+        }
+    }];
+    
+    return CheckListObject;
+}
+
 
 
 -(void)setupRider{

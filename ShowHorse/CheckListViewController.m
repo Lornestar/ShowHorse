@@ -9,6 +9,9 @@
 #import "CheckListViewController.h"
 #import "AppDelegate.h"
 #import "CheckList.h"
+#import "CheckListAddItemPopup.h"
+
+
 @interface CheckListViewController (){
    int CurrentSelection;
     AppDelegate *appdel;
@@ -25,7 +28,7 @@ static const NSTimeInterval animduration = 0.75;
 static const NSTimeInterval animdelay = 0.25;
 
 @implementation CheckListViewController
-@synthesize btnGroomingKit,btnRider,btnSaddlery,btnStable,vwAddItembackground,tblview;
+@synthesize btnGroomingKit,btnRider,btnSaddlery,btnStable,vwAddItembackground,tblview, datachecklist;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -168,6 +171,50 @@ static const NSTimeInterval animdelay = 0.25;
     }
 }
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1){
+        NSMutableArray *temparray;
+        temparray = [[NSMutableArray alloc]init];
+        switch (CurrentSelection) {
+            case 1:
+                for (CheckList *chktemp in appdel.listdataChecklistRiders.list){
+                    chktemp.ischecked = NO;
+                    [temparray addObject:chktemp];
+                }
+                appdel.listdataChecklistRiders.list = temparray;
+                break;
+            case 2:
+                for (CheckList *chktemp in appdel.listdataChecklistSaddlery.list){
+                    chktemp.ischecked = NO;
+                    [temparray addObject:chktemp];
+                }
+                appdel.listdataChecklistSaddlery.list = temparray;
+                break;
+            case 3:
+                for (CheckList *chktemp in appdel.listdataChecklistGrooming.list){
+                    chktemp.ischecked = NO;
+                    [temparray addObject:chktemp];
+                }
+                appdel.listdataChecklistGrooming.list = temparray;
+                break;
+            case 4:
+                for (CheckList *chktemp in appdel.listdataChecklistStable.list){
+                    chktemp.ischecked = NO;
+                    [temparray addObject:chktemp];
+                }
+                appdel.listdataChecklistStable.list = temparray;
+                break;
+        }
+        [tblview reloadData];
+    }
+}
+
+- (IBAction)btnresetChecklistClicked:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Are you sure your want to reset this list?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"YES", nil];
+    [alert show];
+    
+}
+
 - (IBAction)btnRiderClicked:(id)sender {
     CurrentSelection = 1;
     [tblview reloadData];
@@ -192,6 +239,7 @@ static const NSTimeInterval animdelay = 0.25;
     
     [UIView commitAnimations];
 
+    datachecklist = [[dataCheckList alloc]init:1];
 }
 
 - (IBAction)btnSaddleryClicked:(id)sender {
@@ -218,6 +266,7 @@ static const NSTimeInterval animdelay = 0.25;
     }
     
     [UIView commitAnimations];
+    datachecklist = [[dataCheckList alloc]init:2];
 }
 
 - (IBAction)btnGroomingClicked:(id)sender {
@@ -244,6 +293,7 @@ static const NSTimeInterval animdelay = 0.25;
     }
     
     [UIView commitAnimations];
+    datachecklist = [[dataCheckList alloc]init:3];
 }
 
 - (IBAction)btnStableClicked:(id)sender {
@@ -270,10 +320,40 @@ static const NSTimeInterval animdelay = 0.25;
     }
     
     [UIView commitAnimations];
-    
+    datachecklist = [[dataCheckList alloc]init:4];
 }
 
 - (IBAction)btnAddItemClicked:(id)sender {
+    CheckListAddItemPopup *chkpopup = [[CheckListAddItemPopup alloc] initWithFrame:self.view.bounds  title:@"Add Item" checklistobj:nil];
+    
+    
+    chkpopup.onClosePressed = ^(UAModalPanel* panel) {
+        // [panel hide];
+        [panel hideWithOnComplete:^(BOOL finished) {
+            [panel removeFromSuperview];
+        }];
+        UADebugLog(@"onClosePressed block called from panel: %@", modalPanel);
+    };
+    
+    ///////////////////////////////////////////
+    //   Panel is a reference to the modalPanel
+    chkpopup.onActionPressed = ^(UAModalPanel* panel) {
+        UADebugLog(@"onActionPressed block called from panel: %@", modalPanel);
+        NSLog(@"Button Pressed");
+    };
+    
+    UADebugLog(@"UAModalView will display using blocks: %@", modalPanel);
+    
+    chkpopup.delegate = self;
+    
+    ///////////////////////////////////
+    // Add the panel to our view
+    [self.view addSubview:chkpopup];
+    
+    ///////////////////////////////////
+    // Show the panel from the center of the button that was pressed
+    UIButton *btntemp = (UIButton*)sender;
+    [chkpopup showFromPoint:btntemp.center];
 }
 
 -(void)ReturnState{
@@ -288,6 +368,25 @@ static const NSTimeInterval animdelay = 0.25;
     btnGroomingKit.center = groomingkitposition;
     btnStable.center = stableposition;
     [tblview setContentOffset:CGPointZero];
+}
+
+-(void)AddCheckList:(CheckList*)chktemp{
+    chktemp = [datachecklist AddCheckListItems:chktemp CurrentSelection:CurrentSelection];
+    switch (CurrentSelection) {
+        case 1:
+            [appdel.listdataChecklistRiders.list setObject:chktemp atIndexedSubscript:chktemp.listindex];
+            break;
+        case 2:
+            [appdel.listdataChecklistSaddlery.list setObject:chktemp atIndexedSubscript:chktemp.listindex];
+            break;
+        case 3:
+            [appdel.listdataChecklistGrooming.list setObject:chktemp atIndexedSubscript:chktemp.listindex];
+            break;
+        case 4:
+            [appdel.listdataChecklistStable.list setObject:chktemp atIndexedSubscript:chktemp.listindex];
+            break;
+    }
+    [tblview reloadData];
 }
 
 @end
