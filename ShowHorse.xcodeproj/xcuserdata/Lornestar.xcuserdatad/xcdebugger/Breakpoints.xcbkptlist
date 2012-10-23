@@ -8,38 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ShowHorse/RecordsViewController.m"
-         timestampString = "372329035.728463"
+         timestampString = "372667916.422502"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "455"
-         endingLineNumber = "455"
+         startingLineNumber = "433"
+         endingLineNumber = "433"
          landmarkName = "-CloseEditField:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ShowHorse/AddOns/TapkuLibrary/TKCalendarMonthView.m"
-         timestampString = "372460627.062166"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "435"
-         endingLineNumber = "435"
-         landmarkName = "-dateSelected"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ShowHorse/AddOns/TapkuLibrary/TKCalendarMonthView.m"
-         timestampString = "372647984.481245"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "285"
-         endingLineNumber = "285"
-         landmarkName = "-drawTileInRect:day:mark:font:font2:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

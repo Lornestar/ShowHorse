@@ -13,17 +13,17 @@
 
 
 - (NSDate*) firstOfMonth{
-	TKDateInformation info = [self dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	TKDateInformation info = [self dateInformationWithTimeZone:[NSTimeZone systemTimeZone]];
 	info.day = 1;
 	info.minute = 0;
 	info.second = 0;
 	info.hour = 0;
-	return [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	return [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
 }
 - (NSDate*) nextMonth{
 	
 	
-	TKDateInformation info = [self dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	TKDateInformation info = [self dateInformationWithTimeZone:[NSTimeZone systemTimeZone]];
 	info.month++;
 	if(info.month>12){
 		info.month = 1;
@@ -33,13 +33,13 @@
 	info.second = 0;
 	info.hour = 0;
 	
-	return [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	return [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
 	
 }
 - (NSDate*) previousMonth{
 	
 	
-	TKDateInformation info = [self dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	TKDateInformation info = [self dateInformationWithTimeZone:[NSTimeZone systemTimeZone]];
 	info.month--;
 	if(info.month<1){
 		info.month = 12;
@@ -49,7 +49,7 @@
 	info.minute = 0;
 	info.second = 0;
 	info.hour = 0;
-	return [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	return [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
 	
 }
 

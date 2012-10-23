@@ -231,6 +231,9 @@
         tempview.center = CGPointMake(tempview.center.x + 300, tempview.center.y);
         
         double offset = ((double)33 * (double)indexPath.row);
+        if (offset > 265){
+            offset = 265;
+        }
         //tblview.center = CGPointMake(tblview.center.x, tblview.center.y - offset);
         tblview.frame = CGRectMake(tblview.frame.origin.x, tblview.frame.origin.y, tblview.frame.size.width, tblview.frame.size.height - offset);
         [tblview scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
@@ -296,6 +299,7 @@
     else{
         tblview.alpha = 1;
         tblviewperformance.alpha = 0;
+    
         //btnHorseSummary.alpha = 0;
         //btnPerformanceSummary.alpha = 0;
         //btnRegistrationPapers.alpha = 0;
@@ -426,7 +430,7 @@
 }
 
 -(void)CloseEditField:(id)sender{
-    CurrentSelection = 0;
+    
     UIButton *thebutton = (UIButton*)sender;
     UITableViewCell *cell = [[thebutton superview]superview];
     
@@ -456,6 +460,7 @@
     [dataHorseSummary updateobjectInListAtIndex:path.row updatevalue:txtfield.text];
     
     [txtfield resignFirstResponder];
+    
 }
 
 - (IBAction)btnEditDone:(id)sender {

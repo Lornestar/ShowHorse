@@ -16,6 +16,7 @@
 @interface RecordsViewController : UIViewController< UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UAModalPanelDelegate>{
 
     
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnHorseSummary;
 @property (weak, nonatomic) IBOutlet UIButton *btnRiderSummary;
@@ -25,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtEditField;
 @property (weak, nonatomic) IBOutlet UITableView *tblviewperformance;
 @property (weak, nonatomic) IBOutlet UIButton *btnAddPerformance;
+
+
 
 
 - (IBAction)btnHorseSummary:(id)sender;

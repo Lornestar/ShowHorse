@@ -384,7 +384,7 @@
     [list addObject:tempchecklist];
     
     tempchecklist= [[CheckList alloc] init];
-    tempchecklist.theLabel = @"Chux wipes";
+    tempchecklist.theLabel = @"Wipes";
     tempchecklist.listindex = 13;
     [list addObject:tempchecklist];
     
@@ -514,7 +514,7 @@
     [list addObject:tempchecklist];
     
     tempchecklist= [[CheckList alloc] init];
-    tempchecklist.theLabel = @"Esky";
+    tempchecklist.theLabel = @"Cool bin/Esky";
     tempchecklist.listindex = 14;
     [list addObject:tempchecklist];
     

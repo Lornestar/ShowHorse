@@ -213,7 +213,7 @@
 	[comp setHour:info.hour];
 	[comp setMinute:info.minute];
 	[comp setSecond:info.second];
-	//[comp setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	//[comp setTimeZone:[NSTimeZone systemTimeZone]];
 	
 	return [gregorian dateFromComponents:comp];
 }

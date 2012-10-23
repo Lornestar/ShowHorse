@@ -94,51 +94,57 @@
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Micro Chip #";
+    record.Question = @"DOB/Age";
     record.Section = 0;
     record.RecordID = 2;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Height";
+    record.Question = @"Micro Chip #";
     record.Section = 0;
     record.RecordID = 3;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Rug Size";
+    record.Question = @"Height";
     record.Section = 0;
     record.RecordID = 4;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Hood Size";
+    record.Question = @"Rug Size";
     record.Section = 0;
     record.RecordID = 5;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Bridle Size";
+    record.Question = @"Hood Size";
     record.Section = 0;
     record.RecordID = 6;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Bit Size";
+    record.Question = @"Bridle Size";
     record.Section = 0;
     record.RecordID = 7;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Breed Registrations";
+    record.Question = @"Bit Size";
     record.Section = 0;
     record.RecordID = 8;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Other";
+    record.Question = @"Breed Registrations";
     record.Section = 0;
     record.RecordID = 9;
+    [playList addObject:record];
+    
+    record = [[Records alloc] init];
+    record.Question = @"Other";
+    record.Section = 0;
+    record.RecordID = 10;
     [playList addObject:record];
     
     AppDelegate *appdel = [UIApplication sharedApplication].delegate;
@@ -173,57 +179,63 @@
     Records *record;
     
     record = [[Records alloc] init];
-    record.Question = @"D.O.B";
-    record.Section = 1;
-    record.RecordID = 10;
-    [playList addObject:record];
-    
-    record = [[Records alloc] init];
-    record.Question = @"Helmet";
+    record.Question = @"Name";
     record.Section = 1;
     record.RecordID = 11;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Boot";
+    record.Question = @"D.O.B";
     record.Section = 1;
     record.RecordID = 12;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Jacket Size";
+    record.Question = @"Helmet";
     record.Section = 1;
     record.RecordID = 13;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Qualifications";
+    record.Question = @"Boot";
     record.Section = 1;
     record.RecordID = 14;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Memberships";
+    record.Question = @"Jacket Size";
     record.Section = 1;
     record.RecordID = 15;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Blood Type";
+    record.Question = @"Qualifications";
     record.Section = 1;
     record.RecordID = 16;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Medical Conditions/Allergies";
+    record.Question = @"Memberships";
     record.Section = 1;
     record.RecordID = 17;
     [playList addObject:record];
     
     record = [[Records alloc] init];
-    record.Question = @"Other";
+    record.Question = @"Blood Type";
     record.Section = 1;
     record.RecordID = 18;
+    [playList addObject:record];
+    
+    record = [[Records alloc] init];
+    record.Question = @"Medical Conditions/Allergies";
+    record.Section = 1;
+    record.RecordID = 19;
+    [playList addObject:record];
+    
+    record = [[Records alloc] init];
+    record.Question = @"Other";
+    record.Section = 1;
+    record.RecordID = 20;
     [playList addObject:record];
     
     AppDelegate *appdel = [UIApplication sharedApplication].delegate;
@@ -234,7 +246,7 @@
             if (!error){
                 //find succeeded
                 for (PFObject* currentrecord in objects){
-                    NSInteger recordindex = [[currentrecord objectForKey:@"RecordID"] integerValue] - 10;
+                    NSInteger recordindex = [[currentrecord objectForKey:@"RecordID"] integerValue] - 11;
                     if ((playList.count > recordindex) && (recordindex > -1)){
                         Records *temprecord = [playList objectAtIndex:recordindex];
                         temprecord.Answer = [currentrecord objectForKey:@"Answer"];

@@ -43,8 +43,8 @@
     txtEmail.alpha = 0;
     txtPassword.alpha = 0;
     btnDoSignUp.alpha = 0;
-    txtEmail.text = @"lorne@lornestar.com";
-    txtPassword.text = @"1234";
+    //txtEmail.text = @"lorne@lornestar.com";
+    //txtPassword.text = @"1234";
     gstCoverDown.enabled = NO;
     
     AppDelegate *appdel = [UIApplication sharedApplication].delegate;

@@ -134,8 +134,8 @@
 	[cvc dismissSemiModalViewController:vwdatepicker];
     
     NSDate *d = viewController.datePicker.date;
-    //TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    //d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    //TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone systemTimeZone]];
+    //d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
 	txtEventDate.text = [NSString stringWithFormat:@"%@",d];
     chosendate = d;
 }
