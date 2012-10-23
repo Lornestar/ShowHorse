@@ -15,8 +15,34 @@
 
 
 @implementation CalendarAddEventPopup
-@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar,btnCreateEvent,vwdatepicker,chosendate;
+@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar,btnCreateEvent,vwdatepicker,chosendate,thedatepicker,vwthedatepicker,df;
 
+
+- (IBAction)btnDateCancelClicked:(id)sender {
+    [self resetdatepicker];
+}
+
+- (IBAction)btnSelectDateClicked:(id)sender {
+    chosendate = thedatepicker.date;
+    
+    
+    
+    
+    txtEventDate.text = [df stringFromDate:chosendate];
+    
+    [self resetdatepicker];
+}
+
+-(void)resetdatepicker{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    
+    vwthedatepicker.center = CGPointMake(140, 600);
+    
+    [UIView commitAnimations];
+    
+    thedatepicker.date = [NSDate date];
+}
 
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj
 {
@@ -30,17 +56,24 @@
         self.margin = UIEdgeInsetsMake(15, 15, 0, 15);
         self.padding = UIEdgeInsetsMake(5, 5, 5, 5);
         
+        df = [[NSDateFormatter alloc]init];
+        [df setDateStyle:NSDateFormatterLongStyle];
+        [df setTimeStyle:NSDateFormatterMediumStyle];
+        
         //Reg Papers
         [[NSBundle mainBundle]  loadNibNamed:@"CalendarAddEvent" owner:self options:nil];
         [self.contentView addSubview:vwCalendarAddEvent];
+        [self.contentView addSubview:vwthedatepicker];
         [txtEventTitle becomeFirstResponder];
         chosendate = [NSDate date];
+        vwthedatepicker.center = CGPointMake(140, 600);
+        thedatepicker.timeZone = [NSTimeZone localTimeZone];
         
         if (calendarobj){
             globaldatacalendar = calendarobj;
             txtEventTitle.text = calendarobj.EventTitle;
             txtEventDescription.text = calendarobj.EventDescription;
-            txtEventDate.text = [NSString stringWithFormat:@"%@", calendarobj.EventDate];
+            txtEventDate.text = [df stringFromDate:calendarobj.EventDate];
             btnCreateEvent.titleLabel.text = @"Save Event";
         }
     }
@@ -80,8 +113,17 @@
 - (IBAction)txtEventDateClicked:(id)sender {
     [vwCalendarAddEvent endEditing:YES];
     [sender resignFirstResponder];
-    CalendarViewController *cvc = (CalendarViewController*)delegate;
-    [cvc presentSemiModalViewController:vwdatepicker];
+    //CalendarViewController *cvc = (CalendarViewController*)delegate;
+    //[cvc presentSemiModalViewController:vwdatepicker];
+    
+//reveal 160, 318 & hide 160, 520
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    
+    //thedatepicker.center = CGPointMake(140, 300);
+    vwthedatepicker.center = CGPointMake(140, 290);
+        
+    [UIView commitAnimations];
 }
 
 #pragma mark -

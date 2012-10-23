@@ -34,6 +34,7 @@
 #import "TKGlobal.h"
 #import "UIImage+TKCategory.h"
 #import "NSDate+CalendarGrid.h"
+#import "AppDelegate.h"
 
 
 #pragma mark -
@@ -220,6 +221,8 @@
 	firstOfPrev = -1;
 	marks = markArray;
 	_monthDate = date;
+    AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+    appdel.calendarmonth = date;
 	startOnSunday = sunday;
 	
 	TKDateInformation dateInfo = [_monthDate dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
@@ -427,14 +430,15 @@
 }
 - (NSDate*) dateSelected{
 	if(selectedDay < 1 || selectedPortion != 1) return nil;
-	
-	TKDateInformation info = [_monthDate dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+	//TKDateInformation info = [_monthDate dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    TKDateInformation info = [appdel.calendarmonth dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	info.hour = 0;
 	info.minute = 0;
 	info.second = 0;
 	info.day = selectedDay;
-	NSDate *d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	
+	//NSDate *d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	NSDate *d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
 		
 	
 	return d;
@@ -736,7 +740,9 @@
 	if(isNext){
 		overlap = [newTile.monthDate isEqualToDate:[dates objectAtIndex:0]] ? 0 : 44;
 	}else{
-		overlap = [currentTile.monthDate compare:[dates lastObject]] !=  NSOrderedDescending ? 44 : 0;
+		//overlap = [currentTile.monthDate compare:[dates lastObject]] !=  NSOrderedDescending ? 44 : 0;
+        AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+        overlap = [appdel.calendarmonth compare:[dates lastObject]] !=  NSOrderedDescending ? 44 : 0;
 	}
 	
 	float y = isNext ? currentTile.bounds.size.height - overlap : newTile.bounds.size.height * -1 + overlap +2;

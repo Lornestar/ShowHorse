@@ -46,6 +46,11 @@
     txtEmail.text = @"lorne@lornestar.com";
     txtPassword.text = @"1234";
     gstCoverDown.enabled = NO;
+    
+    AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+    if (appdel.userinfo){
+        [self performSegueWithIdentifier:@"segueHorseImage" sender:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning

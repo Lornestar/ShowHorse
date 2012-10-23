@@ -23,11 +23,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnCreateEvent;
 @property (strong, nonatomic) IBOutlet TDDatePickerController *vwdatepicker;
 - (IBAction)txtEventDateClicked:(id)sender;
+@property (weak, nonatomic) IBOutlet UIDatePicker *thedatepicker;
+@property (strong, nonatomic) IBOutlet UIView *vwthedatepicker;
 
+- (IBAction)btnDateCancelClicked:(id)sender;
+- (IBAction)btnSelectDateClicked:(id)sender;
 
 
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj;
 
 @property (strong,nonatomic) NSDate *chosendate;
+@property (strong,nonatomic) NSDateFormatter *df;
 
 @end

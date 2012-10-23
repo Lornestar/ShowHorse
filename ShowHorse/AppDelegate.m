@@ -12,11 +12,12 @@
 #import "RegistrationPapers.h"
 #import "dataCheckList.h"
 #import "CalendarDates.h"
+#import "TestFlight.h"
 
 
 @implementation AppDelegate
 @synthesize dataHorseSummary,dataRiderSummary,userinfo,listdataPerformances,listdataPapers;
-@synthesize listdataChecklistGrooming, listdataChecklistRiders, listdataChecklistSaddlery, listdataChecklistStable,listdataCalendarDates;
+@synthesize listdataChecklistGrooming, listdataChecklistRiders, listdataChecklistSaddlery, listdataChecklistStable,listdataCalendarDates,df;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -29,14 +30,31 @@
     // [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
-    userinfo = [[User alloc]init];
-    if (userinfo.UserID){
-        [self initRecords];
-        [self initPerformances];
-        [self initPapers];
-        [self initChecklist];
-        [self initCalendarDates];
+    df = [[NSDateFormatter alloc]init];
+    [df setDateStyle:NSDateFormatterLongStyle];
+    [df setTimeStyle:NSDateFormatterMediumStyle];
+
+
+    [TestFlight takeOff:@"059244bb96c7be63f638749260df0bda_MTM5ODI0MjAxMi0xMC0xOCAwNDoxMToyMy4yNDMzNTU"];
+    
+    [self LoadUserinfo];
+    if (!userinfo.UserID){
+        userinfo = [[User alloc]init];
+        if (userinfo.UserID){
+            [self initRecords];
+            [self initPerformances];
+            [self initPapers];
+            [self initChecklist];
+            [self initCalendarDates];
+        }
     }
+    else{
+        UIAlertView *alerttemp = [[UIAlertView alloc]initWithTitle:@"" message:@"Loaded info" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alerttemp show];
+    }
+    
+    
+    
     
     
     // Override point for customization after application launch.
@@ -53,11 +71,13 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self SaveUserinfo];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self LoadUserinfo];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -68,6 +88,42 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self SaveUserinfo];
+}
+
+-(void)SaveUserinfo{
+    NSUserDefaults *nsuser = [NSUserDefaults standardUserDefaults];
+    
+    
+    [nsuser setObject:userinfo.UserID forKey:@"userid"];
+    [nsuser setObject:userinfo.Username forKey:@"username"];
+    
+   
+    //[nsuser setObject:datatemp forKey:@"listdataCalendarDates"];
+    /*[nsuser setObject:[NSArray arrayWithArray:listdataChecklistGrooming.list] forKey:@"listdataChecklistGrooming"];
+    [nsuser setObject:[NSArray arrayWithArray:listdataChecklistRiders.list] forKey:@"listdataChecklistRiders"];
+    [nsuser setObject:[NSArray arrayWithArray:listdataChecklistSaddlery.list] forKey:@"listdataChecklistSaddlery"];
+    [nsuser setObject:[NSArray arrayWithArray:listdataChecklistStable.list] forKey:@"listdataChecklistStable"];
+    [nsuser setObject:[NSArray arrayWithArray:listdataPapers] forKey:@"listdataPapers"];
+    [nsuser setObject:[NSArray arrayWithArray:listdataPerformances] forKey:@"listdataPerformances"];
+    [nsuser synchronize];*/
+}
+
+-(void)LoadUserinfo{
+    NSUserDefaults *nsuser = [NSUserDefaults standardUserDefaults];
+    userinfo.UserID = [nsuser objectForKey:@"userid"];
+    userinfo.Username = [nsuser objectForKey:@"username"];
+    if (userinfo.UserID){
+        /*[self initChecklist];
+        
+        listdataCalendarDates = [NSKeyedUnarchiver unarchiveObjectWithData:[nsuser objectForKey:@"listdataCalendarDates"]];
+        listdataChecklistGrooming.list  = [nsuser objectForKey:@"listdataChecklistGrooming"];
+        listdataChecklistRiders.list = [nsuser objectForKey:@"listdataChecklistRiders"];
+        listdataChecklistSaddlery.list = [nsuser objectForKey:@"listdataChecklistSaddlery"];
+        listdataChecklistStable.list = [nsuser objectForKey:@"listdataChecklistStable"];
+        listdataPapers = [nsuser objectForKey:@"listdataPapers"];
+        listdataPerformances = [nsuser objectForKey:@"listdataPerformances"];*/
+    }
 }
 
 -(void) initRecords{

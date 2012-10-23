@@ -25,6 +25,9 @@
 @property (nonatomic, strong) dataCheckList *listdataChecklistGrooming;
 @property (nonatomic, strong) dataCheckList *listdataChecklistStable;
 @property (nonatomic, strong) NSMutableArray *listdataCalendarDates;
+@property (strong,nonatomic) NSDateFormatter *df;
+@property (strong,nonatomic) NSDate *calendarmonth;
+
 
 -(void) initRecords;
 -(void) initPerformances;

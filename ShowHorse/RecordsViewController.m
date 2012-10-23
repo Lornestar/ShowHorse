@@ -408,6 +408,8 @@
     [self.scrollPapers layoutWithSpeed:0.5 completion:nil];
 }
 
+
+
 - (void)viewDidUnload {
     [self setBtnHorseSummary:nil];
     [self setBtnRiderSummary:nil];

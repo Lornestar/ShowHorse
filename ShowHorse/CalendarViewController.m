@@ -31,7 +31,7 @@
 	[calendar reload];
     
     datacalendardates = [[DataCalendarDates alloc]init];
-}
+    }
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
 	
@@ -48,19 +48,13 @@
 
 -(void)updatetableData:(NSDate*)currentdate{
     NSDateComponents *comp1 = [[NSCalendar currentCalendar]components:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit fromDate:currentdate];
-    NSInteger *d1 = [comp1 day];
-    NSInteger *d2 = [comp1 month];
-    NSInteger *d3 = [comp1 year];
-    NSInteger *d4;
-    NSInteger *d5;
-    NSInteger *d6;
-    NSDateComponents *comp2;
+        NSDateComponents *comp2;
     NSMutableArray *temparray = [[NSMutableArray alloc]init];
+    
     for (CalendarDates* tempcal in appdel.listdataCalendarDates){
+        
         comp2 = [[NSCalendar currentCalendar]components:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit fromDate:tempcal.EventDate];
-        d4 = [comp2 day];
-        d5 = [comp2 month];
-        d6 = [comp2 year];
+        
         if (([comp1 day] == [comp2 day]) && ([comp1 month] == [comp2 month]) && ([comp1 year] == [comp2 year])){
             //Same day
             [temparray addObject:tempcal];
@@ -82,7 +76,7 @@
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)date{
 	
 	// CHANGE THE DATE TO YOUR TIMEZONE
-	TKDateInformation info = [date dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	TKDateInformation info = [date dateInformationWithTimeZone:[NSTimeZone systemTimeZone]];
 	NSDate *myTimeZoneDay = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
 	
 	NSLog(@"Date Selected: %@",myTimeZoneDay);
@@ -120,6 +114,8 @@
     lbltitle.text = tempdate.EventTitle;
     UILabel *lbldesc = (UILabel*)[cell.contentView viewWithTag:2];
     lbldesc.text = tempdate.EventDescription;
+    UILabel *lbldate = (UILabel*)[cell.contentView viewWithTag:3];
+    lbldate.text = [appdel.df stringFromDate:tempdate.EventDate];
     return cell;
 	
 }
@@ -186,10 +182,10 @@
         [self.dataArray addObject:[NSNumber numberWithBool:NO]];
 		
 		
-		/*TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone systemTimeZone]];
 		info.day++;
-		d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];*/
-        d = [d addTimeInterval:60*60*24];
+		d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
+        //d = [d addTimeInterval:60*60*24];
         
         counter +=1;
 		if([d compare:end]==NSOrderedDescending) break;
