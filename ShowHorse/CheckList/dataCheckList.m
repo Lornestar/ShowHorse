@@ -10,6 +10,8 @@
 #import "CheckList.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <CoreData/CoreData.h>
+#import "DB_CheckList.h"
 
 @implementation dataCheckList
 @synthesize list;
@@ -34,7 +36,24 @@
             break;
     }
     
+    //Check for additional checklist items
     AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_CheckList"];
+    //request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    request.predicate = [NSPredicate predicateWithFormat:@"currentselection = %d", type];
+
+    NSArray *results = [appdel.ShowHorseDatabase.managedObjectContext executeFetchRequest:request error:nil];
+    
+    for (DB_CheckList *currentrow in results){
+        CheckList *caltemp = [[CheckList alloc]init];
+        caltemp.theLabel = currentrow.thelabel;
+        caltemp.listindex = list.count;
+        [list addObject:caltemp];
+    }
+    
+    //loop through results
+    
+    /*AppDelegate *appdel = [UIApplication sharedApplication].delegate;
     PFQuery *query = [PFQuery queryWithClassName:@"User_CheckList"];
     [query whereKey:@"User_ID" equalTo:appdel.userinfo.UserID];
     [query whereKey:@"CurrentSelection" equalTo:[NSNumber numberWithInt:type]];
@@ -54,7 +73,9 @@
         else{
             NSLog(@"Error:%@ %@", error, [error userInfo]);
         }
-    }];
+    }];*/
+        
+    
     return self;
 }
 
@@ -97,7 +118,9 @@
         }
     }
     
-    
+    [self InsertUpdateCheclistItem:CheckListObject.theLabel currentselection:CurrentSelection inManagedObjectContext:appdel.ShowHorseDatabase.managedObjectContext];
+    [appdel SaveDatabase];
+    /*
     //Add to d
     [checklistobject setObject:CheckListObject.theLabel forKey:@"theLabel"];
     [checklistobject setObject:appdel.userinfo.UserID forKey:@"User_ID"];
@@ -107,10 +130,43 @@
             CheckListObject.checklistobject = checklistobject;
         }
     }];
+     */
     
     return CheckListObject;
 }
 
+
+-(void)InsertUpdateCheclistItem:(NSString *)name currentselection:(int)currentselection
+inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    DB_CheckList *dbchecklist = nil;
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_CheckList"];
+    request.predicate = [NSPredicate predicateWithFormat:@"thelabel = %@", name];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"thelabel" ascending:YES];
+    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    
+    NSError *error = nil;
+    NSArray *checklistitems = [context executeFetchRequest:request error:&error];
+    
+    if (!checklistitems || ([checklistitems count] > 1)) {
+        // handle error
+    } else if (![checklistitems count]) {
+        dbchecklist = [NSEntityDescription insertNewObjectForEntityForName:@"DB_CheckList"
+                                                     inManagedObjectContext:context];
+        //dbchecklist.thelabel = name;
+        //dbchecklist.currentselection = [NSNumber numberWithInt:currentselection];
+        
+        [dbchecklist setValue:name forKey:@"thelabel"];
+        [dbchecklist setValue:[NSNumber numberWithInt:currentselection] forKey:@"currentselection"];
+    } else {
+        dbchecklist = [checklistitems lastObject];
+        [dbchecklist setValue:name forKey:@"thelabel"];
+        [dbchecklist setValue:[NSNumber numberWithInt:currentselection] forKey:@"currentselection"];
+    }
+    
+   
+}
 
 
 -(void)setupRider{

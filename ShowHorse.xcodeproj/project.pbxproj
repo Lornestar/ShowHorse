@@ -33,6 +33,7 @@
 		B91D4EF0161CBA3400120FA3 /* UARoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D4EDA161CBA3400120FA3 /* UARoundedRectView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B91D4EF4161CF54500120FA3 /* PerformancePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D4EF3161CF54500120FA3 /* PerformancePopup.m */; };
 		B91D4EF6161D4AF100120FA3 /* UAExampleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D4EF5161D4AF100120FA3 /* UAExampleView.xib */; };
+		B921A601165C2F6B001992A3 /* DB_Calendar_Dates.m in Sources */ = {isa = PBXBuildFile; fileRef = B921A600165C2F6B001992A3 /* DB_Calendar_Dates.m */; };
 		B922BDFE161F993000A7B735 /* RegistrationPapers.m in Sources */ = {isa = PBXBuildFile; fileRef = B922BDFD161F993000A7B735 /* RegistrationPapers.m */; };
 		B922BE361620EA6400A7B735 /* NSObject+MGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = B922BE211620EA6400A7B735 /* NSObject+MGEvents.m */; };
 		B922BE371620EA6400A7B735 /* UIView+MGEasyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B922BE231620EA6400A7B735 /* UIView+MGEasyFrame.m */; };
@@ -120,6 +121,12 @@
 		B932FF1C1626981300FC1324 /* CalendarAddEventPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = B932FF1B1626981300FC1324 /* CalendarAddEventPopup.m */; };
 		B932FF1E162698F100FC1324 /* CalendarAddEvent.xib in Resources */ = {isa = PBXBuildFile; fileRef = B932FF1D162698F000FC1324 /* CalendarAddEvent.xib */; };
 		B932FF2116269D2800FC1324 /* CalendarDates.m in Sources */ = {isa = PBXBuildFile; fileRef = B932FF2016269D2800FC1324 /* CalendarDates.m */; };
+		B95FE8AB1655874300352210 /* ShowHorseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B95FE8A91655874300352210 /* ShowHorseModel.xcdatamodeld */; };
+		B95FE8C11655943A00352210 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95FE8C01655943A00352210 /* CoreData.framework */; };
+		B95FE8DF1655987300352210 /* DB_CheckList.m in Sources */ = {isa = PBXBuildFile; fileRef = B95FE8DE1655987300352210 /* DB_CheckList.m */; };
+		B95FE8E51655987400352210 /* DB_Records.m in Sources */ = {isa = PBXBuildFile; fileRef = B95FE8E41655987400352210 /* DB_Records.m */; };
+		B9664D521658CCE10042E1FE /* DB_Registration_Papers.m in Sources */ = {isa = PBXBuildFile; fileRef = B9664D511658CCE10042E1FE /* DB_Registration_Papers.m */; };
+		B9664D561658CCE20042E1FE /* DB_Performance.m in Sources */ = {isa = PBXBuildFile; fileRef = B9664D551658CCE20042E1FE /* DB_Performance.m */; };
 		B969081E1619529800C20580 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B969081D1619529700C20580 /* User.m */; };
 		B9690822161AAE9900C20580 /* Performances.m in Sources */ = {isa = PBXBuildFile; fileRef = B9690821161AAE9900C20580 /* Performances.m */; };
 		B9690825161AB46300C20580 /* DataPerformanceSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = B9690824161AB46300C20580 /* DataPerformanceSummary.m */; };
@@ -215,6 +222,8 @@
 		B91D4EF2161CF54500120FA3 /* PerformancePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerformancePopup.h; path = Records/PerformancePopup.h; sourceTree = "<group>"; };
 		B91D4EF3161CF54500120FA3 /* PerformancePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PerformancePopup.m; path = Records/PerformancePopup.m; sourceTree = "<group>"; };
 		B91D4EF5161D4AF100120FA3 /* UAExampleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAExampleView.xib; sourceTree = "<group>"; };
+		B921A5FF165C2F6B001992A3 /* DB_Calendar_Dates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Calendar_Dates.h; sourceTree = "<group>"; };
+		B921A600165C2F6B001992A3 /* DB_Calendar_Dates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Calendar_Dates.m; sourceTree = "<group>"; };
 		B922BDFC161F993000A7B735 /* RegistrationPapers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistrationPapers.h; path = Records/RegistrationPapers.h; sourceTree = "<group>"; };
 		B922BDFD161F993000A7B735 /* RegistrationPapers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistrationPapers.m; path = Records/RegistrationPapers.m; sourceTree = "<group>"; };
 		B922BE201620EA6400A7B735 /* NSObject+MGEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MGEvents.h"; sourceTree = "<group>"; };
@@ -376,6 +385,16 @@
 		B932FF1D162698F000FC1324 /* CalendarAddEvent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarAddEvent.xib; sourceTree = "<group>"; };
 		B932FF1F16269D2800FC1324 /* CalendarDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDates.h; sourceTree = "<group>"; };
 		B932FF2016269D2800FC1324 /* CalendarDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDates.m; sourceTree = "<group>"; };
+		B95FE8AA1655874300352210 /* ShowHorseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShowHorseModel.xcdatamodel; sourceTree = "<group>"; };
+		B95FE8C01655943A00352210 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B95FE8DD1655987300352210 /* DB_CheckList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_CheckList.h; sourceTree = "<group>"; };
+		B95FE8DE1655987300352210 /* DB_CheckList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_CheckList.m; sourceTree = "<group>"; };
+		B95FE8E31655987400352210 /* DB_Records.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Records.h; sourceTree = "<group>"; };
+		B95FE8E41655987400352210 /* DB_Records.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Records.m; sourceTree = "<group>"; };
+		B9664D501658CCE10042E1FE /* DB_Registration_Papers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Registration_Papers.h; sourceTree = "<group>"; };
+		B9664D511658CCE10042E1FE /* DB_Registration_Papers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Registration_Papers.m; sourceTree = "<group>"; };
+		B9664D541658CCE20042E1FE /* DB_Performance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Performance.h; sourceTree = "<group>"; };
+		B9664D551658CCE20042E1FE /* DB_Performance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Performance.m; sourceTree = "<group>"; };
 		B969081C1619529700C20580 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		B969081D1619529700C20580 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		B9690820161AAE9800C20580 /* Performances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Performances.h; path = Records/Performances.h; sourceTree = "<group>"; };
@@ -451,6 +470,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B95FE8C11655943A00352210 /* CoreData.framework in Frameworks */,
 				B914C34416314057007D14F2 /* libz.dylib in Frameworks */,
 				B9288194162639DC0070A7C1 /* MapKit.framework in Frameworks */,
 				B90A2EFF16119BD2003BA331 /* CFNetwork.framework in Frameworks */,
@@ -795,9 +815,27 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		B95FE8AD165592CB00352210 /* ModelSubclasses */ = {
+			isa = PBXGroup;
+			children = (
+				B921A5FF165C2F6B001992A3 /* DB_Calendar_Dates.h */,
+				B921A600165C2F6B001992A3 /* DB_Calendar_Dates.m */,
+				B9664D541658CCE20042E1FE /* DB_Performance.h */,
+				B9664D551658CCE20042E1FE /* DB_Performance.m */,
+				B9664D501658CCE10042E1FE /* DB_Registration_Papers.h */,
+				B9664D511658CCE10042E1FE /* DB_Registration_Papers.m */,
+				B95FE8E31655987400352210 /* DB_Records.h */,
+				B95FE8E41655987400352210 /* DB_Records.m */,
+				B95FE8DD1655987300352210 /* DB_CheckList.h */,
+				B95FE8DE1655987300352210 /* DB_CheckList.m */,
+			);
+			name = ModelSubclasses;
+			sourceTree = "<group>";
+		};
 		B9C3351D1606CB60002E2AD4 = {
 			isa = PBXGroup;
 			children = (
+				B95FE8C01655943A00352210 /* CoreData.framework */,
 				B914C34316314057007D14F2 /* libz.dylib */,
 				B9288193162639DC0070A7C1 /* MapKit.framework */,
 				B9140CC9161642A600A3C02D /* Default-568h@2x.png */,
@@ -843,6 +881,7 @@
 		B9C335321606CB61002E2AD4 /* ShowHorse */ = {
 			isa = PBXGroup;
 			children = (
+				B95FE8AD165592CB00352210 /* ModelSubclasses */,
 				B932FF19162697B700FC1324 /* Calendar */,
 				B928800B1624F5EA0070A7C1 /* CheckList */,
 				B9140CD316164FA300A3C02D /* RecordsView */,
@@ -870,6 +909,7 @@
 				B92880D9162630330070A7C1 /* CalendarViewController.m */,
 				B92881BC162684480070A7C1 /* CalendarListViewController.h */,
 				B92881BD1626844B0070A7C1 /* CalendarListViewController.m */,
+				B95FE8A91655874300352210 /* ShowHorseModel.xcdatamodeld */,
 			);
 			path = ShowHorse;
 			sourceTree = "<group>";
@@ -1184,6 +1224,12 @@
 				B928151D162F5DEA00140E7C /* TDDatePickerController.m in Sources */,
 				B928151F162F5DEA00140E7C /* TDSemiModalViewController.m in Sources */,
 				B9281520162F5DEA00140E7C /* UIViewController+TDSemiModalExtension.m in Sources */,
+				B95FE8AB1655874300352210 /* ShowHorseModel.xcdatamodeld in Sources */,
+				B95FE8DF1655987300352210 /* DB_CheckList.m in Sources */,
+				B95FE8E51655987400352210 /* DB_Records.m in Sources */,
+				B9664D521658CCE10042E1FE /* DB_Registration_Papers.m in Sources */,
+				B9664D561658CCE20042E1FE /* DB_Performance.m in Sources */,
+				B921A601165C2F6B001992A3 /* DB_Calendar_Dates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1330,6 +1376,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B95FE8A91655874300352210 /* ShowHorseModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B95FE8AA1655874300352210 /* ShowHorseModel.xcdatamodel */,
+			);
+			currentVersion = B95FE8AA1655874300352210 /* ShowHorseModel.xcdatamodel */;
+			path = ShowHorseModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B9C3351F1606CB60002E2AD4 /* Project object */;
 }

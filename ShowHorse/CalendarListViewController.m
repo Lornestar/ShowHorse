@@ -17,7 +17,7 @@
 @end
 
 @implementation CalendarListViewController
-@synthesize tableData, appdel,datacalendardates;
+@synthesize tableData, appdel,datacalendardates,tblview;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +38,7 @@
 	// Do any additional setup after loading the view.
     appdel = [UIApplication sharedApplication].delegate;
     tableData = appdel.listdataCalendarDates;
-    
+    datacalendardates = [[DataCalendarDates alloc]init];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -59,13 +59,13 @@
     UILabel *lbldesc = (UILabel*)[cell.contentView viewWithTag:2];
     lbldesc.text = tempdate.EventDescription;
     UILabel *lbldate = (UILabel*)[cell.contentView viewWithTag:3];
-    lbldate.text = [NSString stringWithFormat:@"%@", tempdate.EventDate];
+    lbldate.text = [appdel.df stringFromDate:tempdate.EventDate];
     return cell;
 	
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CalendarAddEventPopup *cldpopup = [[CalendarAddEventPopup alloc] initWithFrame:self.view.bounds  title:@"Add Event" calendarobj:[tableData objectAtIndex:indexPath.row]];
+    CalendarAddEventPopup *cldpopup = [[CalendarAddEventPopup alloc] initWithFrame:self.view.bounds  title:@"Add Event" calendarobj:[tableData objectAtIndex:indexPath.row] currentdateselected:[NSDate date]];
     
     
     cldpopup.onClosePressed = ^(UAModalPanel* panel) {
@@ -101,9 +101,7 @@
 
 
 -(void)AddCalendars:(CalendarDates*)caltemp{
-    
     //adding image for Reg Papers
-    datacalendardates = [[DataCalendarDates alloc]init];
     if (caltemp.CalendarDatesObject){
         //Existing object
         caltemp = [datacalendardates AddCalendarDates:caltemp];
@@ -113,8 +111,16 @@
         //New one
         caltemp = [datacalendardates AddCalendarDates:caltemp];
     }
-    [appdel.listdataCalendarDates setObject:caltemp atIndexedSubscript:caltemp.listindex-1];
     
+    [tblview reloadData];
+    [self.navigationController setNavigationBarHidden:NO  animated:YES];
+}
+
+-(void)DeleteEvent:(CalendarDates*)caltemp{
+    //deleting image for Reg Papers
+    [datacalendardates DeleteCalendarDates:caltemp];
+    [tblview reloadData];
+    [self.navigationController setNavigationBarHidden:NO  animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -123,4 +129,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setTblview:nil];
+    [super viewDidUnload];
+}
 @end

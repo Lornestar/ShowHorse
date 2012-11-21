@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSMutableArray *listdataCalendarDates;
 @property (strong,nonatomic) NSDateFormatter *df;
 @property (strong,nonatomic) NSDate *calendarmonth;
+@property (nonatomic, strong) UIManagedDocument *ShowHorseDatabase;  // Model is a Core Data database
 
 
 -(void) initRecords;
@@ -36,4 +37,5 @@
 -(void)logoutVariables;
 -(void) initUser:(NSString*)username userid:(NSString*)userid;
 -(void) initCalendarDates;
+-(void)SaveDatabase;
 @end

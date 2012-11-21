@@ -4,16 +4,29 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ShowHorse/RecordsViewController.m"
-         timestampString = "372667916.422502"
+         filePath = "ShowHorse/CalendarViewController.m"
+         timestampString = "375156050.393567"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "433"
-         endingLineNumber = "433"
-         landmarkName = "-CloseEditField:"
+         startingLineNumber = "137"
+         endingLineNumber = "137"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ShowHorse/Calendar/CalendarAddEventPopup.m"
+         timestampString = "375156190.496533"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
+         landmarkName = "-resetdatepicker"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

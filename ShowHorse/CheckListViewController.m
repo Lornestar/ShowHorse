@@ -45,7 +45,7 @@ static const NSTimeInterval animdelay = 0.25;
 	// Do any additional setup after loading the view.
     appdel = [UIApplication sharedApplication].delegate;
     tblview.alpha = 0;
-    [appdel initChecklist];
+    //[appdel initChecklist];
     CurrentSelection = 1;
 }
 
@@ -239,7 +239,7 @@ static const NSTimeInterval animdelay = 0.25;
     
     [UIView commitAnimations];
 
-    datachecklist = [[dataCheckList alloc]init:1];
+    datachecklist = appdel.listdataChecklistRiders;
 }
 
 - (IBAction)btnSaddleryClicked:(id)sender {
@@ -266,7 +266,7 @@ static const NSTimeInterval animdelay = 0.25;
     }
     
     [UIView commitAnimations];
-    datachecklist = [[dataCheckList alloc]init:2];
+    datachecklist = appdel.listdataChecklistSaddlery;
 }
 
 - (IBAction)btnGroomingClicked:(id)sender {
@@ -293,7 +293,7 @@ static const NSTimeInterval animdelay = 0.25;
     }
     
     [UIView commitAnimations];
-    datachecklist = [[dataCheckList alloc]init:3];
+    datachecklist = appdel.listdataChecklistGrooming;
 }
 
 - (IBAction)btnStableClicked:(id)sender {
@@ -320,7 +320,7 @@ static const NSTimeInterval animdelay = 0.25;
     }
     
     [UIView commitAnimations];
-    datachecklist = [[dataCheckList alloc]init:4];
+    datachecklist = appdel.listdataChecklistStable;
 }
 
 - (IBAction)btnAddItemClicked:(id)sender {

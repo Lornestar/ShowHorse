@@ -14,5 +14,6 @@
 
 @property (nonatomic, retain) NSArray *tableData;
 @property (strong, nonatomic) AppDelegate *appdel;
+@property (strong, nonatomic) IBOutlet UITableView *tblview;
 
 @end

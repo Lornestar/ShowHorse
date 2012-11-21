@@ -30,9 +30,12 @@
 @property (strong, nonatomic) RegistrationPapers *globalRegPapersObject;
 
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title PerformanceObject:(Performances*)PerformanceObject nibid:(int)nibid RegPapersObject:(RegistrationPapers*)RegPapersObject;
-- (IBAction)btnSavePerformanceClicked:(id)sender;
+
 - (IBAction)txtEditFieldDone:(id)sender;
 - (IBAction)txtEditFieldTouch:(id)sender;
+- (IBAction)btnSavePerformanceClicked:(id)sender;
+- (IBAction)btnDeletePerformanceClicked:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *btnDeletePerformance;
 
 
 - (IBAction)btnSaveClick:(id)sender;
@@ -42,5 +45,13 @@
 @property (nonatomic, retain) NSMutableArray *capturedImages;
 @property (nonatomic, retain) OverlayViewController *overlayViewController;
 @property (weak, nonatomic) IBOutlet UIButton *btnSavePhoto;
+- (IBAction)btnSelectDateClick:(id)sender;
+- (IBAction)btnCancelClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *vwtheDatePicker;
+@property (strong, nonatomic) IBOutlet UIDatePicker *thedatepicker;
+
+@property (strong,nonatomic) NSDate *chosendate;
+@property (strong,nonatomic) NSDateFormatter *df;
+- (IBAction)txteventdateeditingbegin:(id)sender;
 
 @end

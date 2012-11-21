@@ -12,7 +12,7 @@
 @interface DataPerformanceSummary : NSObject{
     
 }
--(void)AddPerformance:(Performances*)PerformanceObject;
+-(Performances*)AddPerformance:(Performances*)PerformanceObject currentselectedindex:(int)currentselectedindex;
 - (Performances *)objectInListAtIndex:(unsigned)theIndex;
-
+-(void)DeleteRegPapers:(Performances*)PerformanceObject;
 @end

@@ -16,8 +16,30 @@
 
 @implementation PerformancePopup
 
-@synthesize txteventdate,txteventname,txtclassdescription,txtplacing,txtjudge,txtcompetitors,txtscore,globalPerformanceObject,RegPapersImage,overlayViewController,btnSavePhoto,globalPhoto,globalRegPapersObject;
+@synthesize txteventdate,txteventname,txtclassdescription,txtplacing,txtjudge,txtcompetitors,txtscore,globalPerformanceObject,RegPapersImage,overlayViewController,btnSavePhoto,globalPhoto,globalRegPapersObject,thedatepicker,vwtheDatePicker,df,chosendate,btnDeletePerformance;
 
+-(void)resetdatepicker{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    
+    vwtheDatePicker.center = CGPointMake(140, 600);
+    
+    [UIView commitAnimations];
+  
+}
+
+- (IBAction)btnSelectDateClick:(id)sender {
+    chosendate = thedatepicker.date;
+    
+    txteventdate.text = [df stringFromDate:chosendate];
+    
+    [self resetdatepicker];
+
+}
+
+- (IBAction)btnCancelClick:(id)sender {
+    [self resetdatepicker];
+}
 
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title PerformanceObject:(Performances*)PerformanceObject nibid:(int)nibid RegPapersObject:(RegistrationPapers*)RegPapersObject{
 	if ((self = [super initWithFrame:frame])) {
@@ -35,6 +57,9 @@
         frame.size.height = 100;
         btnSavePhoto.frame = frame;
 		
+        df = [[NSDateFormatter alloc]init];
+        [df setDateStyle:NSDateFormatterLongStyle];
+        [df setTimeStyle:NSDateFormatterMediumStyle];
 		////////////////////////////////////
 		// RANDOMLY CUSTOMIZE IT
 		////////////////////////////////////
@@ -122,7 +147,8 @@
             //Performances
             [[NSBundle mainBundle]  loadNibNamed:@"UAExampleView" owner:self options:nil];
             [self.contentView addSubview:viewLoadedFromXib];
-            
+            [self.contentView addSubview:vwtheDatePicker];
+            vwtheDatePicker.center = CGPointMake(140, 600);
             
             if (PerformanceObject){
                 //Existing performance object
@@ -134,6 +160,10 @@
                 txtcompetitors.text = PerformanceObject.Competitors;
                 txtscore.text = PerformanceObject.Score;
                 globalPerformanceObject = PerformanceObject;
+                btnDeletePerformance.hidden = NO;
+                [btnDeletePerformance setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                [btnDeletePerformance setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+                btnDeletePerformance.backgroundColor = [UIColor redColor];
             }
         }
         else if (nibid ==1){
@@ -152,7 +182,7 @@
             if (RegPapersObject){
                 globalRegPapersObject = RegPapersObject;
                 RegPapersImage.image = globalRegPapersObject.Papers;
-                
+        
                 
                 
                 btnSavePhoto.backgroundColor = [UIColor redColor];
@@ -200,6 +230,19 @@
 	}
 }
 
+- (IBAction)btnDeletePerformanceClicked:(id)sender {
+    //Delete Photo
+    if ([delegate respondsToSelector:@selector(DeletePerformance:)]) {
+        [delegate performSelector:@selector(DeletePerformance:) withObject:globalPerformanceObject];
+        [self hide];
+        // Or perhaps someone is listening for notifications
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DeletePerformanceClicked" object:sender];
+    }
+    
+}
+
+
 - (IBAction)txtEditFieldDone:(id)sender{
     /*UITextField *txtfield = (UITextField*)sender;
     if ([txtfield.placeholder isEqualToString:@"Event Date"]){
@@ -243,11 +286,24 @@
 }
 
 - (IBAction)txtEditFieldTouch:(id)sender {
+    [self resetdatepicker];
     UITextField *txtfield = (UITextField*)sender;
     if ([txtfield.placeholder isEqualToString:@"Event Date"]){
         //move next
         [self MoveView:330];
-       
+        [txteventname resignFirstResponder];
+        //CalendarViewController *cvc = (CalendarViewController*)delegate;
+        //[cvc presentSemiModalViewController:vwdatepicker];
+        
+        //reveal 160, 318 & hide 160, 520
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        
+        //thedatepicker.center = CGPointMake(140, 300);
+        vwtheDatePicker.center = CGPointMake(140, 290);
+        
+        [UIView commitAnimations];
+        
     }
     else if ([txtfield.placeholder isEqualToString:@"Event Name"]){
         //move next
@@ -280,6 +336,7 @@
 
 }
 
+
 - (void)showImagePicker:(UIImagePickerControllerSourceType)sourceType
 {
     if (RegPapersImage.isAnimating)
@@ -303,6 +360,7 @@
         [rvc presentModalViewController:self.overlayViewController.imagePickerController animated:YES];
     }
 }
+
 
 
 - (IBAction)btnSaveClick:(id)sender {
@@ -382,4 +440,9 @@
 }
 */
 
+
+- (IBAction)txteventdateeditingbegin:(id)sender {
+    [viewLoadedFromXib endEditing:YES];
+    [sender resignFirstResponder];
+}
 @end

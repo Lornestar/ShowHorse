@@ -26,11 +26,12 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+    /*AppDelegate *appdel = [UIApplication sharedApplication].delegate;
     [appdel initRecords];
     [appdel initPerformances];
     [appdel initPapers];
     [appdel initCalendarDates];
+*/
 }
 
 - (void)viewDidLoad

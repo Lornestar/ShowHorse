@@ -56,6 +56,6 @@
 -(void)AddPerformance:(Performances*)PerformanceObject;
 @property (weak, nonatomic) IBOutlet MGScrollView *scrollPapers;
 @property (weak, nonatomic) IBOutlet UIView *vwRegPapers;
-
+@property (nonatomic) int curentselectedindex;
 
 @end

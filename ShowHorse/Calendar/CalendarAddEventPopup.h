@@ -30,9 +30,11 @@
 - (IBAction)btnSelectDateClicked:(id)sender;
 
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj;
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj currentdateselected:(NSDate*)currentdateselected;
 
 @property (strong,nonatomic) NSDate *chosendate;
 @property (strong,nonatomic) NSDateFormatter *df;
-
+@property (strong, nonatomic) IBOutlet UIButton *btnDelete;
+- (IBAction)btnDeleteClicked:(id)sender;
+@property (strong, nonatomic) NSDate *globalcurrentdateselected;
 @end

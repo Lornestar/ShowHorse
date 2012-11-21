@@ -10,25 +10,61 @@
 #import "RegistrationPapers.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <CoreData/CoreData.h>
+#import "DB_Registration_Papers.h"
 
 @implementation DataRegPapers
 
--(RegistrationPapers*)AddRegPapers:(RegistrationPapers*)RegPapersObject{
+-(RegistrationPapers*)AddRegPapers:(RegistrationPapers*)RegPapersObject currentselectedindex:(int)currentselectedindex{
     AppDelegate *appdel = [UIApplication sharedApplication].delegate;
     
-    PFObject *regpapersobject;
-    if (RegPapersObject.PapersObject.objectId.length > 0){
-        //existing object
-        regpapersobject = RegPapersObject.PapersObject;
-        [appdel.listdataPapers setObject:RegPapersObject atIndexedSubscript:RegPapersObject.listindex];
+    NSData *imgdata = UIImageJPEGRepresentation(RegPapersObject.Papers, .05f);
+        
+    if (!RegPapersObject.PapersObject){
+        //new one
+        //regpapersobject = [PFObject objectWithClassName:@"User_Registration_Papers"];
+        if (appdel.listdataPapers.count > 0){
+            RegPapersObject.listindex = [[appdel.listdataPapers valueForKeyPath:@"@max.listindex"] intValue]+1;
+        }
+        else{
+            RegPapersObject.listindex = appdel.listdataPapers.count;
+        }
+        [appdel.listdataPapers addObject:RegPapersObject];
     }
     else{
-        regpapersobject = [PFObject objectWithClassName:@"User_Registration_Papers"];
-        RegPapersObject.listindex = appdel.listdataPapers.count;
-        [appdel.listdataPapers addObject:RegPapersObject];        
+        //existing object
+        //regpapersobject = RegPapersObject.PapersObject;
+        [appdel.listdataPapers setObject:RegPapersObject atIndexedSubscript:currentselectedindex];
     }
     
+    DB_Registration_Papers *dbchecklist = nil;
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_Registration_Papers"];
+    request.predicate = [NSPredicate predicateWithFormat:@"listindex = %d", RegPapersObject.listindex];
     
+    NSError *error = nil;
+    NSArray *checklistitems = [appdel.ShowHorseDatabase.managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (!checklistitems || ([checklistitems count] > 1)) {
+        // handle error
+    } else if (![checklistitems count]) {
+        dbchecklist = [NSEntityDescription insertNewObjectForEntityForName:@"DB_Registration_Papers"
+                                                    inManagedObjectContext:appdel.ShowHorseDatabase.managedObjectContext];
+        //dbchecklist.thelabel = name;
+        //dbchecklist.currentselection = [NSNumber numberWithInt:currentselection];
+        
+        [dbchecklist setValue:imgdata forKey:@"papersimage"];
+        [dbchecklist setValue:[NSNumber numberWithInt:RegPapersObject.listindex] forKey:@"listindex"];
+    } else {
+        dbchecklist = [checklistitems lastObject];
+        [dbchecklist setValue:imgdata forKey:@"papersimage"];
+        [dbchecklist setValue:[NSNumber numberWithInt:RegPapersObject.listindex] forKey:@"listindex"];
+    }
+    
+    [appdel SaveDatabase];
+    RegPapersObject.PapersObject = dbchecklist;
+    
+    /*
     //Add to db
     
     NSData *imgdata = UIImageJPEGRepresentation(RegPapersObject.Papers, .05f);
@@ -38,18 +74,28 @@
         if (!error){
             RegPapersObject.PapersObject = regpapersobject;
         }
-    }];
+    }];*/
     return RegPapersObject;
 }
 
 -(void)DeleteRegPapers:(RegistrationPapers*)RegPapersObject{
-    
+    /*
         AppDelegate *appdel = [UIApplication sharedApplication].delegate;
         [appdel.listdataPapers removeObjectAtIndex:RegPapersObject.listindex];
 
         [RegPapersObject.PapersObject deleteInBackground];
+    */
+    AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_Registration_Papers"];
+    request.predicate = [NSPredicate predicateWithFormat:@"listindex = %d", RegPapersObject.listindex];
     
+    NSError *error = nil;
+    NSArray *checklistitems = [appdel.ShowHorseDatabase.managedObjectContext executeFetchRequest:request error:&error];
+    DB_Registration_Papers *dbchecklist = [checklistitems lastObject];
+    [appdel.ShowHorseDatabase.managedObjectContext  deleteObject:dbchecklist];
+    [appdel SaveDatabase];
     
+    [appdel.listdataPapers removeObjectAtIndex:RegPapersObject.listindex];
 }
 
 - (RegistrationPapers *)objectInListAtIndex:(unsigned)theIndex;

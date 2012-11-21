@@ -1,3 +1,4 @@
+
 //
 //  RecordsViewController.m
 //  ShowHorse
@@ -41,7 +42,7 @@
 @synthesize hidingpoint, horsepoint, riderpoint, performpoint, registerpoint;
 @synthesize txtEditField;
 @synthesize appdelegate;
-@synthesize tblviewperformance,CurrentSelection,btnAddPerformance, scrollPapers, vwRegPapers;
+@synthesize tblviewperformance,CurrentSelection,btnAddPerformance, scrollPapers, vwRegPapers,curentselectedindex;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -245,7 +246,7 @@
     else{
         //Selected Performance
         Performances *tempperf = [dataPerformanceSummary objectInListAtIndex:indexPath.row];
-        
+        curentselectedindex = indexPath.row;
         PerformancePopup *performancepopup = [[PerformancePopup alloc] initWithFrame:self.view.bounds title:@"Add Performance" PerformanceObject:tempperf nibid:0 RegPapersObject:nil] ;
         
         
@@ -509,37 +510,47 @@
 }
 
 -(void)AddPerformance:(Performances*)PerformanceObject{
-    //Adds new performance to table & db
-    DataPerformanceSummary *dataperformance = [[DataPerformanceSummary alloc] init];
-    [dataperformance AddPerformance:PerformanceObject];
-    
+    PerformanceObject = [dataPerformanceSummary AddPerformance:PerformanceObject currentselectedindex:curentselectedindex];
     tableData = appdelegate.listdataPerformances;
     [tblviewperformance reloadData];
 }
 
 -(void)AddRegPapers:(RegistrationPapers*)regtemp{
     //adding image for Reg Papers
-    if (regtemp.PapersObject){
-        //Existing object
-        regtemp = [dataRegPapers AddRegPapers:regtemp];
-        //[photosGrid.boxes removeObjectAtIndex:regtemp.listindex];
-        [photosGrid.boxes setObject:[self photoBoxFor:1 theimage:regtemp.Papers RegPapersObject:regtemp] atIndex:regtemp.listindex];
+    if (!regtemp.PapersObject){
+        //New one
+        //regtemp.listindex = photosGrid.boxes.count-1;
+        regtemp = [dataRegPapers AddRegPapers:regtemp currentselectedindex:curentselectedindex];
+        [photosGrid.boxes addObject:[self photoAddBox]];
+        [photosGrid.boxes setObject:[self photoBoxFor:1 theimage:regtemp.Papers RegPapersObject:regtemp] atIndex:photosGrid.boxes.count-1];
+        
     }
     else{
-        //New one
-        regtemp = [dataRegPapers AddRegPapers:regtemp];
-        [photosGrid.boxes setObject:[self photoBoxFor:1 theimage:regtemp.Papers RegPapersObject:regtemp] atIndex:photosGrid.boxes.count-1];
-        [photosGrid.boxes addObject:[self photoAddBox]];
+        //Existing object
+        regtemp = [dataRegPapers AddRegPapers:regtemp currentselectedindex:curentselectedindex];
+        //[photosGrid.boxes removeObjectAtIndex:regtemp.listindex];
+        [photosGrid.boxes setObject:[self photoBoxFor:1 theimage:regtemp.Papers RegPapersObject:regtemp] atIndex:regtemp.listindex];
+        
     }
         
     
     [photosGrid layoutWithSpeed:0.3 completion:nil];
     [scrollPapers layoutWithSpeed:0.3 completion:nil];
+    [self PhotogridReset];
+}
+
+-(void)DeletePerformance:(Performances*)PerformanceObject{
+    [dataPerformanceSummary DeleteRegPapers:PerformanceObject];
+    tableData = appdelegate.listdataPerformances;
+    [tblviewperformance reloadData];
 }
 
 -(void)DeleteRegPapers:(RegistrationPapers*)regtemp{
     [dataRegPapers DeleteRegPapers:regtemp];
+    [photosGrid layoutWithSpeed:0.3 completion:nil];
+    [scrollPapers layoutWithSpeed:0.3 completion:nil];
     [self PhotogridReset];
+
 }
 
 - (void)didSelectActionButton:(UAModalPanel *)modalPanel {
@@ -585,7 +596,7 @@
     __block id bbox = box;
     box.onTap = ^{
         PerformancePopup *performancepopup = [[PerformancePopup alloc] initWithFrame:self.view.bounds title:@"Edit Photo" PerformanceObject:nil nibid:1 RegPapersObject:RegPapersObject];
-        
+        curentselectedindex=i;
         
         performancepopup.onClosePressed = ^(UAModalPanel* panel) {
             // [panel hide];

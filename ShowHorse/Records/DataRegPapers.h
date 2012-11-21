@@ -11,7 +11,7 @@
 
 @interface DataRegPapers : NSObject
 
--(RegistrationPapers*)AddRegPapers:(RegistrationPapers*)RegPapersObject;
+-(RegistrationPapers*)AddRegPapers:(RegistrationPapers*)RegPapersObject currentselectedindex:(int)currentselectedindex;
 - (RegistrationPapers *)objectInListAtIndex:(unsigned)theIndex;
 -(void)DeleteRegPapers:(RegistrationPapers*)RegPapersObject;
 @end

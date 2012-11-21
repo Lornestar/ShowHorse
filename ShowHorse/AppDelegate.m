@@ -13,11 +13,16 @@
 #import "dataCheckList.h"
 #import "CalendarDates.h"
 #import "TestFlight.h"
+#import <CoreData/CoreData.h>
+#import "DB_Calendar_Dates.h"
+#import "DB_Performance.h"
+#import "DB_Registration_Papers.h"
 
 
 @implementation AppDelegate
 @synthesize dataHorseSummary,dataRiderSummary,userinfo,listdataPerformances,listdataPapers;
 @synthesize listdataChecklistGrooming, listdataChecklistRiders, listdataChecklistSaddlery, listdataChecklistStable,listdataCalendarDates,df;
+@synthesize ShowHorseDatabase;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -37,21 +42,25 @@
 
     [TestFlight takeOff:@"059244bb96c7be63f638749260df0bda_MTM5ODI0MjAxMi0xMC0xOCAwNDoxMToyMy4yNDMzNTU"];
     
-    [self LoadUserinfo];
+    [self initDatabase];
+    
+    
+    
+    /*
     if (!userinfo.UserID){
         userinfo = [[User alloc]init];
         if (userinfo.UserID){
             [self initRecords];
             [self initPerformances];
             [self initPapers];
-            [self initChecklist];
+            
             [self initCalendarDates];
         }
     }
     else{
         UIAlertView *alerttemp = [[UIAlertView alloc]initWithTitle:@"" message:@"Loaded info" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alerttemp show];
-    }
+    }*/
     
     
     
@@ -136,7 +145,25 @@
         listdataPerformances = [[NSMutableArray alloc] init];
     }
     
-    PFQuery *query = [PFQuery queryWithClassName:@"User_Performances"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_Performance"];
+    //request.predicate = [NSPredicate predicateWithFormat:@"currentselection = %@", type];
+    
+    NSArray *results = [ShowHorseDatabase.managedObjectContext executeFetchRequest:request error:nil];
+    for (DB_Performance *currentrow in results){
+        Performances *tempperf = [[Performances alloc]init];
+        tempperf.Date = currentrow.date;
+        tempperf.Name = currentrow.name;
+        tempperf.Description = currentrow.perf_description;
+        tempperf.Placing = currentrow.placing;
+        tempperf.Judge = currentrow.judge;
+        tempperf.Competitors = currentrow.competitors;
+        tempperf.Score = currentrow.score;
+        tempperf.PerformanceObject = currentrow;
+        tempperf.listindex = listdataPerformances.count;
+        [listdataPerformances addObject:tempperf];
+    }
+    
+    /*PFQuery *query = [PFQuery queryWithClassName:@"User_Performances"];
     [query whereKey:@"User_ID" equalTo:userinfo.UserID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error){
@@ -163,7 +190,7 @@
         else{
             NSLog(@"Error:%@ %@", error, [error userInfo]);
         }
-    }];
+    }];*/
 }
 
 -(void) initPapers{
@@ -171,7 +198,23 @@
         listdataPapers = [[NSMutableArray alloc] init];
     }
     
-    PFQuery *query = [PFQuery queryWithClassName:@"User_Registration_Papers"];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_Registration_Papers"];
+    //request.predicate = [NSPredicate predicateWithFormat:@"currentselection = %@", type];
+    
+    NSArray *results = [ShowHorseDatabase.managedObjectContext executeFetchRequest:request error:nil];
+    for (DB_Registration_Papers *currentrow in results){
+        RegistrationPapers *regtemp = [[RegistrationPapers alloc]init];
+        
+        NSData *tempdata = currentrow.papersimage;
+        UIImage *imgtemp = [[UIImage alloc] initWithData:tempdata];
+        regtemp.Papers = imgtemp;
+        regtemp.PapersObject = currentrow;
+        regtemp.listindex = listdataPapers.count;
+        [listdataPapers addObject:regtemp];
+    }
+    
+    /*PFQuery *query = [PFQuery queryWithClassName:@"User_Registration_Papers"];
     [query whereKey:@"User_ID" equalTo:userinfo.UserID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error){
@@ -193,7 +236,7 @@
         else{
             NSLog(@"Error:%@ %@", error, [error userInfo]);
         }
-    }];
+    }];*/
 }
 
 -(void) initChecklist{
@@ -213,10 +256,28 @@
 
 -(void) initCalendarDates{
     //initialize Calendar Dates
+    
     if (listdataCalendarDates == nil){
         listdataCalendarDates = [[NSMutableArray alloc]init];
     }
-    PFQuery *query = [PFQuery queryWithClassName:@"User_Calendar_Dates"];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_Calendar_Dates"];
+    //request.predicate = [NSPredicate predicateWithFormat:@"currentselection = %@", type];
+    
+    NSArray *results = [ShowHorseDatabase.managedObjectContext executeFetchRequest:request error:nil];
+    for (DB_Calendar_Dates *currentrow in results){
+        CalendarDates *caltemp = [[CalendarDates alloc]init];
+        
+        caltemp.EventDate = currentrow.eventdate;
+        caltemp.EventDescription = currentrow.eventdescription;
+        caltemp.EventTitle = currentrow.eventtitle;
+        caltemp.listindex = [currentrow.listindex intValue];
+        caltemp.CalendarDatesObject = currentrow;
+        [listdataCalendarDates addObject:caltemp];
+    }
+    
+    
+    /*PFQuery *query = [PFQuery queryWithClassName:@"User_Calendar_Dates"];
     [query whereKey:@"User_ID" equalTo:userinfo.UserID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error){
@@ -242,6 +303,8 @@
             NSLog(@"Error:%@ %@", error, [error userInfo]);
         }
     }];
+    */
+    
     
     
 }
@@ -256,4 +319,42 @@
     listdataPerformances = nil;
     listdataCalendarDates = nil;
 }
+
+-(void)initDatabase{
+    if (!self.ShowHorseDatabase) {  // for demo purposes, we'll create a default database if none is set
+        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        url = [url URLByAppendingPathComponent:@"ShowHorse Database"];
+        // url is now "<Documents Directory>/ShowHorse Database"
+        self.ShowHorseDatabase = [[UIManagedDocument alloc] initWithFileURL:url]; // setter will create this for us on disk
+    }
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.ShowHorseDatabase.fileURL path]]) {
+        // does not exist on disk, so create it
+        [self.ShowHorseDatabase saveToURL:self.ShowHorseDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            [self initapp];
+            
+        }];
+    } else if (self.ShowHorseDatabase.documentState == UIDocumentStateClosed) {
+        // exists on disk, but we need to open it
+        [self.ShowHorseDatabase openWithCompletionHandler:^(BOOL success) {
+            [self initapp];
+        }];
+    } else if (self.ShowHorseDatabase.documentState == UIDocumentStateNormal) {
+        // already open and ready to use
+        [self initapp];
+    }
+}
+
+-(void)initapp{
+    [self initChecklist];
+    [self initCalendarDates];
+    [self initRecords];
+    [self initPerformances];
+    [self initPapers];
+}
+
+-(void)SaveDatabase{
+    [ShowHorseDatabase saveToURL:ShowHorseDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+}
+
 @end

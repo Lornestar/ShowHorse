@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "DB_Performance.h"
 
 @interface Performances : NSObject
 @property (nonatomic, strong) NSString *Name;
@@ -17,6 +18,6 @@
 @property (nonatomic, strong) NSString *Judge;
 @property (nonatomic, strong) NSString *Competitors;
 @property (nonatomic, strong) NSString  *Score;
-@property (nonatomic, strong) PFObject *PerformanceObject;
+@property (nonatomic, strong) DB_Performance *PerformanceObject;
 @property (nonatomic) int listindex;
 @end

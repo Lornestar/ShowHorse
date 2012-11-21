@@ -15,7 +15,7 @@
 
 
 @implementation CalendarAddEventPopup
-@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar,btnCreateEvent,vwdatepicker,chosendate,thedatepicker,vwthedatepicker,df;
+@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar,btnCreateEvent,vwdatepicker,chosendate,thedatepicker,vwthedatepicker,df, btnDelete,globalcurrentdateselected;
 
 
 - (IBAction)btnDateCancelClicked:(id)sender {
@@ -41,10 +41,10 @@
     
     [UIView commitAnimations];
     
-    thedatepicker.date = [NSDate date];
+    thedatepicker.date = globalcurrentdateselected;
 }
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj currentdateselected:(NSDate*)currentdateselected
 {
     if ((self = [super initWithFrame:frame])) {
 		
@@ -68,13 +68,19 @@
         chosendate = [NSDate date];
         vwthedatepicker.center = CGPointMake(140, 600);
         thedatepicker.timeZone = [NSTimeZone localTimeZone];
+        globalcurrentdateselected = currentdateselected;
+        thedatepicker.date = globalcurrentdateselected;
         
         if (calendarobj){
             globaldatacalendar = calendarobj;
             txtEventTitle.text = calendarobj.EventTitle;
             txtEventDescription.text = calendarobj.EventDescription;
             txtEventDate.text = [df stringFromDate:calendarobj.EventDate];
-            btnCreateEvent.titleLabel.text = @"Save Event";
+            //btnCreateEvent.titleLabel.text = @"Save Event";
+            btnDelete.hidden = NO;
+            [btnDelete setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [btnDelete setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+            btnDelete.backgroundColor = [UIColor redColor];
         }
     }
     return self;
@@ -150,6 +156,16 @@
 -(void)datePickerCancel:(TDDatePickerController*)viewController {
     CalendarViewController *cvc = (CalendarViewController*)delegate;
 	[cvc dismissSemiModalViewController:vwdatepicker];
+}
+
+- (IBAction)btnDeleteClicked:(id)sender {
+    
+    if ([delegate respondsToSelector:@selector(DeleteEvent:)]) {
+        [delegate performSelector:@selector(DeleteEvent:) withObject:globaldatacalendar];
+        [self hide];
+        // Or perhaps someone is listening for notifications
+    }
+
 }
 
 @end

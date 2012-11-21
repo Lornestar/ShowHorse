@@ -111,6 +111,11 @@
     
 }
 
+- (IBAction)btnDoEnter:(id)sender {
+    //[self opencover:1];
+    [self performSegueWithIdentifier:@"segueToolBar" sender:nil];
+}
+
 - (IBAction)btnSignUp:(id)sender {
     [self opencover:0];
 }

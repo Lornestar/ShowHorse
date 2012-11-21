@@ -29,7 +29,7 @@
 @property (strong, nonatomic) DataCalendarDates *datacalendardates;
 @property (strong, nonatomic) AppDelegate *appdel;
 @property (nonatomic, retain) NSArray *tableData;
-
+@property (strong, nonatomic) NSDate *currentdateselected;
 - (IBAction)AddEvent_Clicked:(id)sender;
 
 @end

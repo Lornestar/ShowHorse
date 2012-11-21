@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "Performances.h"
 #import <Parse/Parse.h>
+#import <CoreData/CoreData.h>
+#import "DB_Performance.h"
 
 @implementation DataPerformanceSummary
 
@@ -22,23 +24,70 @@
     return self;
 }
 
--(void)AddPerformance:(Performances*)PerformanceObject{
+-(Performances*)AddPerformance:(Performances*)PerformanceObject currentselectedindex:(int)currentselectedindex{
     AppDelegate *appdel = [UIApplication sharedApplication].delegate;
     
-    PFObject *performobject;
-      if (PerformanceObject.PerformanceObject.objectId.length > 0){
-        //existing object
-          performobject = PerformanceObject.PerformanceObject; //[[PFQuery queryWithClassName:@"User_Performances"] getObjectWithId:PerformanceObject.PerformanceObject.objectId];
-          [appdel.listdataPerformances setObject:PerformanceObject atIndexedSubscript:PerformanceObject.listindex];
+    //PFObject *performobject;
+      if (!PerformanceObject.PerformanceObject){
+          //new one
+          
+          //performobject = [PFObject objectWithClassName:@"User_Performances"];
+          if (appdel.listdataPerformances.count > 0){
+              PerformanceObject.listindex = [[appdel.listdataPerformances valueForKeyPath:@"@max.listindex"] intValue]+1;
+          }
+          else{
+              PerformanceObject.listindex = appdel.listdataPerformances.count;
+          }
+          [appdel.listdataPerformances addObject:PerformanceObject];
     }
     else{
-        performobject = [PFObject objectWithClassName:@"User_Performances"];
-        [appdel.listdataPerformances addObject:PerformanceObject];
+        //existing object
+        //performobject = PerformanceObject.PerformanceObject; //[[PFQuery queryWithClassName:@"User_Performances"] getObjectWithId:PerformanceObject.PerformanceObject.objectId];
+        [appdel.listdataPerformances setObject:PerformanceObject atIndexedSubscript:currentselectedindex];
+        
+        
     }
    
+    DB_Performance *dbchecklist = nil;
     
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_Performance"];
+    request.predicate = [NSPredicate predicateWithFormat:@"listindex = %d", PerformanceObject.listindex];
+    
+    NSError *error = nil;
+    NSArray *checklistitems = [appdel.ShowHorseDatabase.managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (!checklistitems || ([checklistitems count] > 1)) {
+        // handle error
+    } else if (![checklistitems count]) {
+        dbchecklist = [NSEntityDescription insertNewObjectForEntityForName:@"DB_Performance"
+                                                    inManagedObjectContext:appdel.ShowHorseDatabase.managedObjectContext];
+        //dbchecklist.thelabel = name;
+        //dbchecklist.currentselection = [NSNumber numberWithInt:currentselection];
+        
+        [dbchecklist setValue:PerformanceObject.Date forKey:@"date"];
+        [dbchecklist setValue:PerformanceObject.Name forKey:@"name"];
+        [dbchecklist setValue:PerformanceObject.Description forKey:@"perf_description"];
+        [dbchecklist setValue:PerformanceObject.Placing forKey:@"placing"];
+        [dbchecklist setValue:PerformanceObject.Judge forKey:@"judge"];
+        [dbchecklist setValue:PerformanceObject.Competitors forKey:@"competitors"];
+        [dbchecklist setValue:PerformanceObject.Score forKey:@"score"];
+        [dbchecklist setValue:[NSNumber numberWithInt:PerformanceObject.listindex] forKey:@"listindex"];
+    } else {
+        dbchecklist = [checklistitems lastObject];
+        [dbchecklist setValue:PerformanceObject.Date forKey:@"date"];
+        [dbchecklist setValue:PerformanceObject.Name forKey:@"name"];
+        [dbchecklist setValue:PerformanceObject.Description forKey:@"perf_description"];
+        [dbchecklist setValue:PerformanceObject.Placing forKey:@"placing"];
+        [dbchecklist setValue:PerformanceObject.Judge forKey:@"judge"];
+        [dbchecklist setValue:PerformanceObject.Competitors forKey:@"competitors"];
+        [dbchecklist setValue:PerformanceObject.Score forKey:@"score"];
+        [dbchecklist setValue:[NSNumber numberWithInt:PerformanceObject.listindex] forKey:@"listindex"];
+    }
+    
+    [appdel SaveDatabase];
+    PerformanceObject.PerformanceObject = dbchecklist;
     //Add to db
-    
+    /*
     NSDictionary *tempdict = [NSDictionary dictionaryWithObjectsAndKeys:
                               PerformanceObject.Date, @"Date",
                               PerformanceObject.Name, @"Name",
@@ -55,9 +104,24 @@
             PerformanceObject.PerformanceObject = performobject;
         }
     }];
+    */
     
+    return PerformanceObject;
+}
+
+-(void)DeleteRegPapers:(Performances*)PerformanceObject{
     
+    AppDelegate *appdel = [UIApplication sharedApplication].delegate;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_Performance"];
+    request.predicate = [NSPredicate predicateWithFormat:@"listindex = %d", PerformanceObject.listindex];
     
+    NSError *error = nil;
+    NSArray *checklistitems = [appdel.ShowHorseDatabase.managedObjectContext executeFetchRequest:request error:&error];
+    DB_Performance *dbchecklist = [checklistitems lastObject];
+    [appdel.ShowHorseDatabase.managedObjectContext  deleteObject:dbchecklist];
+    [appdel SaveDatabase];
+    
+    [appdel.listdataPerformances removeObjectAtIndex:PerformanceObject.listindex];
 }
 
 - (Performances *)objectInListAtIndex:(unsigned)theIndex;

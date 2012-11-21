@@ -12,7 +12,7 @@
 #import "DataCalendarDates.h"
 
 @implementation CalendarViewController
-@synthesize dataArray, dataDictionary,calendar, datacalendardates, appdel,tblview,tableData;
+@synthesize dataArray, dataDictionary,calendar, datacalendardates, appdel,tblview,tableData,currentdateselected;
 
 
 
@@ -29,13 +29,15 @@
 	// Ensure this is the last "addSubview" because the calendar must be the top most view layer
 	[self.view addSubview:calendar];
 	[calendar reload];
-    
+    currentdateselected = [NSDate date];
     datacalendardates = [[DataCalendarDates alloc]init];
     }
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
 	
-    
+    [calendar reload];
+    [self updatetableData:[NSDate date]];
+    [tblview reloadData];
     //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //[dateFormatter setDateFormat:@"dd.MM.yy"];
     //NSDate *d = [dateFormatter dateFromString:@"02.05.11"];
@@ -80,7 +82,7 @@
 	NSDate *myTimeZoneDay = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
 	
 	NSLog(@"Date Selected: %@",myTimeZoneDay);
-    
+    currentdateselected = date;
     [self updatetableData:date];
     
 	[tblview reloadData];
@@ -132,7 +134,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CalendarAddEventPopup *cldpopup = [[CalendarAddEventPopup alloc] initWithFrame:self.view.bounds  title:@"Add Event" calendarobj:[tableData objectAtIndex:indexPath.row]];
+    CalendarAddEventPopup *cldpopup = [[CalendarAddEventPopup alloc] initWithFrame:self.view.bounds  title:@"Add Event" calendarobj:[tableData objectAtIndex:indexPath.row] currentdateselected:currentdateselected];
     
     
     cldpopup.onClosePressed = ^(UAModalPanel* panel) {
@@ -223,7 +225,7 @@
 
 
 - (IBAction)AddEvent_Clicked:(id)sender {
-    CalendarAddEventPopup *cldpopup = [[CalendarAddEventPopup alloc] initWithFrame:self.view.bounds  title:@"Add Event" calendarobj:nil];
+    CalendarAddEventPopup *cldpopup = [[CalendarAddEventPopup alloc] initWithFrame:self.view.bounds  title:@"Add Event" calendarobj:nil currentdateselected:currentdateselected];
     
     
     cldpopup.onClosePressed = ^(UAModalPanel* panel) {
@@ -256,6 +258,7 @@
 }
 
 -(void)AddCalendars:(CalendarDates*)caltemp{
+   
     //adding image for Reg Papers
     if (caltemp.CalendarDatesObject){
         //Existing object
@@ -266,8 +269,18 @@
         //New one
         caltemp = [datacalendardates AddCalendarDates:caltemp];
     }
-    [appdel.listdataCalendarDates setObject:caltemp atIndexedSubscript:caltemp.listindex];
+    
     [calendar reload];
+    [self updatetableData:[NSDate date]];
+    [tblview reloadData];
+}
+
+-(void)DeleteEvent:(CalendarDates*)caltemp{
+    //deleting image for Reg Papers
+    [datacalendardates DeleteCalendarDates:caltemp];
+    [calendar reload];
+    [self updatetableData:[NSDate date]];
+    [tblview reloadData];
 }
 
 - (void)viewDidUnload {

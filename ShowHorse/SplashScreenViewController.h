@@ -25,6 +25,7 @@ MBProgressHUD *HUD;
 @property (weak, nonatomic) IBOutlet UIButton *btnSignin;
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *gstCoverDown;
 
+- (IBAction)btnDoEnter:(id)sender;
 - (IBAction)btnSignUp:(id)sender;
 - (IBAction)btnSignIn:(id)sender;
 - (IBAction)btnDoSignUp:(id)sender;

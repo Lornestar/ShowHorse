@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DB_Calendar_Dates" representedClassName="DB_Calendar_Dates" syncable="YES">
+        <attribute name="eventdate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="eventdescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="listindex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="DB_CheckList" representedClassName="DB_CheckList" syncable="YES">
+        <attribute name="currentselection" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="thelabel" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DB_Performance" representedClassName="DB_Performance" syncable="YES">
+        <attribute name="competitors" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="judge" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="listindex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="perf_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="placing" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DB_Records" representedClassName="DB_Records" syncable="YES">
+        <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="section" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="DB_Registration_Papers" representedClassName="DB_Registration_Papers" syncable="YES">
+        <attribute name="listindex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="papersimage" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DB_Calendar_Dates" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="DB_CheckList" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="DB_Performance" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="DB_Records" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="DB_Registration_Papers" positionX="160" positionY="192" width="128" height="75"/>
+    </elements>
+</model>
