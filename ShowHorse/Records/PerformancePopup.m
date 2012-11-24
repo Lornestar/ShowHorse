@@ -16,7 +16,7 @@
 
 @implementation PerformancePopup
 
-@synthesize txteventdate,txteventname,txtclassdescription,txtplacing,txtjudge,txtcompetitors,txtscore,globalPerformanceObject,RegPapersImage,overlayViewController,btnSavePhoto,globalPhoto,globalRegPapersObject,thedatepicker,vwtheDatePicker,df,chosendate,btnDeletePerformance;
+@synthesize txteventdate,txteventname,txtclassdescription,txtplacing,txtjudge,txtcompetitors,txtscore,globalPerformanceObject,RegPapersImage,overlayViewController,btnSavePhoto,globalPhoto,globalRegPapersObject,thedatepicker,vwtheDatePicker,df,chosendate,btnDeletePerformance,btnFullScreen;
 
 -(void)resetdatepicker{
     [UIView beginAnimations:nil context:nil];
@@ -195,6 +195,7 @@
             else{
                 globalRegPapersObject = [[RegistrationPapers alloc]init];
                 btnSavePhoto.hidden = YES;
+                btnFullScreen.hidden = YES;
             }
         }
         
@@ -444,5 +445,14 @@
 - (IBAction)txteventdateeditingbegin:(id)sender {
     [viewLoadedFromXib endEditing:YES];
     [sender resignFirstResponder];
+}
+- (IBAction)btnFullScreenClicked:(id)sender {
+    if ([delegate respondsToSelector:@selector(openimageviewer:)]) {
+        [delegate performSelector:@selector(openimageviewer:) withObject:RegPapersImage.image];
+        
+        // Or perhaps someone is listening for notifications
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveRegPapersClicked" object:sender];
+    }
 }
 @end

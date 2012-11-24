@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OverlayViewController.h"
 
-@interface SettingsViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *lblUsername;
+@interface SettingsViewController : UIViewController <UIImagePickerControllerDelegate>
 
-- (IBAction)btnLogoutClicked:(id)sender;
+- (IBAction)btnCameraClicked:(id)sender;
+- (IBAction)btnPhotoLibraryClicked:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *imgNoImage;
+@property (strong, nonatomic) IBOutlet UIImageView *imgHorse;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollvw;
+@property (strong, nonatomic) IBOutlet UILabel *lblHorse;
 
+@property (nonatomic, retain) NSMutableArray *capturedImages;
+@property (nonatomic, retain) OverlayViewController *overlayViewController;
 @end

@@ -3,6 +3,7 @@
     <entity name="DB_Calendar_Dates" representedClassName="DB_Calendar_Dates" syncable="YES">
         <attribute name="eventdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="eventdescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eventtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="listindex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
@@ -30,7 +31,7 @@
         <attribute name="papersimage" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DB_Calendar_Dates" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="DB_Calendar_Dates" positionX="160" positionY="192" width="128" height="120"/>
         <element name="DB_CheckList" positionX="160" positionY="192" width="128" height="75"/>
         <element name="DB_Performance" positionX="160" positionY="192" width="128" height="165"/>
         <element name="DB_Records" positionX="160" positionY="192" width="128" height="90"/>

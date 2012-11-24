@@ -42,7 +42,7 @@
 @synthesize hidingpoint, horsepoint, riderpoint, performpoint, registerpoint;
 @synthesize txtEditField;
 @synthesize appdelegate;
-@synthesize tblviewperformance,CurrentSelection,btnAddPerformance, scrollPapers, vwRegPapers,curentselectedindex;
+@synthesize tblviewperformance,CurrentSelection,btnAddPerformance, scrollPapers, vwRegPapers,curentselectedindex,globalimageviewed;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -733,6 +733,22 @@
     };*/
 }
 
+
+-(void)openimageviewer:(UIImage*)imagetobeviewed
+{
+    //call segue
+    globalimageviewed = imagetobeviewed;
+    [self performSegueWithIdentifier:@"segueimageviewer" sender:self];
+    //[self.tabBarController performSegueWithIdentifier:@"segueimageviewer2" sender:self];
+    //[self.tabBarController performSelector:@selector(openimageviewer:) withObject:imagetobeviewed];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController respondsToSelector:@selector(insertimage:)]){
+        [segue.destinationViewController performSelector:@selector(insertimage:) withObject:globalimageviewed];
+    }
+}
 
 
 @end

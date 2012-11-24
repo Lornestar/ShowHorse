@@ -8,6 +8,7 @@
 
 #import "RootTabBarController.h"
 #import "AppDelegate.h"
+#import "RecordsImageViewerViewController.h"
 
 @interface RootTabBarController ()
 
@@ -53,4 +54,7 @@
     [self setTbRoot:nil];
     [super viewDidUnload];
 }
+
+
+
 @end

@@ -17,6 +17,7 @@
 #import "DB_Calendar_Dates.h"
 #import "DB_Performance.h"
 #import "DB_Registration_Papers.h"
+#import "RecordsImageViewerViewController.h"
 
 
 @implementation AppDelegate
@@ -273,6 +274,7 @@
         caltemp.EventTitle = currentrow.eventtitle;
         caltemp.listindex = [currentrow.listindex intValue];
         caltemp.CalendarDatesObject = currentrow;
+        caltemp.EventID = currentrow.eventid;
         [listdataCalendarDates addObject:caltemp];
     }
     
@@ -356,5 +358,7 @@
 -(void)SaveDatabase{
     [ShowHorseDatabase saveToURL:ShowHorseDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
 }
+
+
 
 @end

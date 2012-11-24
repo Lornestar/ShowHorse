@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *EventTitle;
 @property (nonatomic, strong) NSDate *EventDate;
 @property (nonatomic, strong) NSString *EventDescription;
+@property (nonatomic, strong) NSString *EventID;
 @property (nonatomic, strong) DB_Calendar_Dates *CalendarDatesObject;
 @property (nonatomic) int listindex;
 @end

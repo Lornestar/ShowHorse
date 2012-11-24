@@ -53,5 +53,7 @@
 @property (strong,nonatomic) NSDate *chosendate;
 @property (strong,nonatomic) NSDateFormatter *df;
 - (IBAction)txteventdateeditingbegin:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *btnFullScreen;
+- (IBAction)btnFullScreenClicked:(id)sender;
 
 @end

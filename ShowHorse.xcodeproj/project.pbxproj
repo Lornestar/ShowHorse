@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B905EFF416217DA000F60820 /* tick.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B905EFF316217DA000F60820 /* tick.aiff */; };
+		B908C2B21660578700B81945 /* DB_Calendar_Dates.m in Sources */ = {isa = PBXBuildFile; fileRef = B908C2B11660578700B81945 /* DB_Calendar_Dates.m */; };
 		B90A2EFF16119BD2003BA331 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90A2EFE16119BD2003BA331 /* CFNetwork.framework */; };
 		B9140CC716163FF600A3C02D /* LRSlidingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9140CC616163FF600A3C02D /* LRSlidingTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B9140CCA161642A600A3C02D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9140CC9161642A600A3C02D /* Default-568h@2x.png */; };
@@ -33,7 +34,7 @@
 		B91D4EF0161CBA3400120FA3 /* UARoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D4EDA161CBA3400120FA3 /* UARoundedRectView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B91D4EF4161CF54500120FA3 /* PerformancePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D4EF3161CF54500120FA3 /* PerformancePopup.m */; };
 		B91D4EF6161D4AF100120FA3 /* UAExampleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91D4EF5161D4AF100120FA3 /* UAExampleView.xib */; };
-		B921A601165C2F6B001992A3 /* DB_Calendar_Dates.m in Sources */ = {isa = PBXBuildFile; fileRef = B921A600165C2F6B001992A3 /* DB_Calendar_Dates.m */; };
+		B921A604165C801D001992A3 /* RecordsImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B921A603165C801C001992A3 /* RecordsImageViewerViewController.m */; };
 		B922BDFE161F993000A7B735 /* RegistrationPapers.m in Sources */ = {isa = PBXBuildFile; fileRef = B922BDFD161F993000A7B735 /* RegistrationPapers.m */; };
 		B922BE361620EA6400A7B735 /* NSObject+MGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = B922BE211620EA6400A7B735 /* NSObject+MGEvents.m */; };
 		B922BE371620EA6400A7B735 /* UIView+MGEasyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B922BE231620EA6400A7B735 /* UIView+MGEasyFrame.m */; };
@@ -141,6 +142,9 @@
 		B9C335471606CB61002E2AD4 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C335461606CB61002E2AD4 /* first@2x.png */; };
 		B9C3354C1606CB61002E2AD4 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3354B1606CB61002E2AD4 /* second.png */; };
 		B9C3354E1606CB61002E2AD4 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3354D1606CB61002E2AD4 /* second@2x.png */; };
+		B9CD12E0165ED307004E27A0 /* ToolBar_Horse2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CD12DF165ED307004E27A0 /* ToolBar_Horse2.png */; };
+		B9CD12E3165ED44D004E27A0 /* Add_Photo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CD12E2165ED44D004E27A0 /* Add_Photo.png */; };
+		B9CD12E516604964004E27A0 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CD12E416604964004E27A0 /* EventKit.framework */; };
 		B9D486B4160EA8AE00811B80 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D486B3160EA8AE00811B80 /* AudioToolbox.framework */; };
 		B9D486BD160EA90000811B80 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D486B6160EA90000811B80 /* libsqlite3.dylib */; };
 		B9D486BE160EA90000811B80 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D486B7160EA90000811B80 /* libz.1.1.3.dylib */; };
@@ -173,6 +177,9 @@
 		B9F541F0161518CF00D9AAC6 /* RiderSummary.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F541EC161518CF00D9AAC6 /* RiderSummary.png */; };
 		B9F541F316151D8E00D9AAC6 /* RecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F541F216151D8E00D9AAC6 /* RecordsViewController.m */; };
 		B9F64C1B16279149009CC869 /* DataCalendarDates.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F64C1A16279149009CC869 /* DataCalendarDates.m */; };
+		B9FC65A4165DA4230085011B /* ImageViewerScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FC65A3165DA4230085011B /* ImageViewerScrollView.m */; };
+		B9FC65A7165ECD110085011B /* Enter_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B9FC65A6165ECD110085011B /* Enter_Button.png */; };
+		B9FC65A9165ED0C40085011B /* ToolBar_Horse.png in Resources */ = {isa = PBXBuildFile; fileRef = B9FC65A8165ED0C40085011B /* ToolBar_Horse.png */; };
 		B9FCE3311611A0BB00C5F3F2 /* GetStarted_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B9FCE3301611A0BB00C5F3F2 /* GetStarted_Button.png */; };
 		B9FCE3361612304900C5F3F2 /* SplashScreen_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = B9FCE3331612304900C5F3F2 /* SplashScreen_Background.png */; };
 		B9FCE3371612304900C5F3F2 /* SplashScreen2_Cover.png in Resources */ = {isa = PBXBuildFile; fileRef = B9FCE3341612304900C5F3F2 /* SplashScreen2_Cover.png */; };
@@ -185,6 +192,8 @@
 
 /* Begin PBXFileReference section */
 		B905EFF316217DA000F60820 /* tick.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = tick.aiff; sourceTree = "<group>"; };
+		B908C2B01660578700B81945 /* DB_Calendar_Dates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Calendar_Dates.h; sourceTree = "<group>"; };
+		B908C2B11660578700B81945 /* DB_Calendar_Dates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Calendar_Dates.m; sourceTree = "<group>"; };
 		B90A2EFE16119BD2003BA331 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B9140CC516163FF600A3C02D /* LRSlidingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSlidingTableViewCell.h; sourceTree = "<group>"; };
 		B9140CC616163FF600A3C02D /* LRSlidingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSlidingTableViewCell.m; sourceTree = "<group>"; };
@@ -222,8 +231,8 @@
 		B91D4EF2161CF54500120FA3 /* PerformancePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerformancePopup.h; path = Records/PerformancePopup.h; sourceTree = "<group>"; };
 		B91D4EF3161CF54500120FA3 /* PerformancePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PerformancePopup.m; path = Records/PerformancePopup.m; sourceTree = "<group>"; };
 		B91D4EF5161D4AF100120FA3 /* UAExampleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAExampleView.xib; sourceTree = "<group>"; };
-		B921A5FF165C2F6B001992A3 /* DB_Calendar_Dates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Calendar_Dates.h; sourceTree = "<group>"; };
-		B921A600165C2F6B001992A3 /* DB_Calendar_Dates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Calendar_Dates.m; sourceTree = "<group>"; };
+		B921A602165C801C001992A3 /* RecordsImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordsImageViewerViewController.h; sourceTree = "<group>"; };
+		B921A603165C801C001992A3 /* RecordsImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordsImageViewerViewController.m; sourceTree = "<group>"; };
 		B922BDFC161F993000A7B735 /* RegistrationPapers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistrationPapers.h; path = Records/RegistrationPapers.h; sourceTree = "<group>"; };
 		B922BDFD161F993000A7B735 /* RegistrationPapers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistrationPapers.m; path = Records/RegistrationPapers.m; sourceTree = "<group>"; };
 		B922BE201620EA6400A7B735 /* NSObject+MGEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MGEvents.h"; sourceTree = "<group>"; };
@@ -416,6 +425,9 @@
 		B9C335461606CB61002E2AD4 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		B9C3354B1606CB61002E2AD4 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		B9C3354D1606CB61002E2AD4 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		B9CD12DF165ED307004E27A0 /* ToolBar_Horse2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolBar_Horse2.png; sourceTree = "<group>"; };
+		B9CD12E2165ED44D004E27A0 /* Add_Photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Add_Photo.png; sourceTree = "<group>"; };
+		B9CD12E416604964004E27A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		B9D486B3160EA8AE00811B80 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B9D486B6160EA90000811B80 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B9D486B7160EA90000811B80 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
@@ -455,6 +467,10 @@
 		B9F541F216151D8E00D9AAC6 /* RecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordsViewController.m; sourceTree = "<group>"; };
 		B9F64C1916279149009CC869 /* DataCalendarDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCalendarDates.h; sourceTree = "<group>"; };
 		B9F64C1A16279149009CC869 /* DataCalendarDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCalendarDates.m; sourceTree = "<group>"; };
+		B9FC65A2165DA4230085011B /* ImageViewerScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewerScrollView.h; sourceTree = "<group>"; };
+		B9FC65A3165DA4230085011B /* ImageViewerScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewerScrollView.m; sourceTree = "<group>"; };
+		B9FC65A6165ECD110085011B /* Enter_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Enter_Button.png; sourceTree = "<group>"; };
+		B9FC65A8165ED0C40085011B /* ToolBar_Horse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolBar_Horse.png; sourceTree = "<group>"; };
 		B9FCE3301611A0BB00C5F3F2 /* GetStarted_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GetStarted_Button.png; sourceTree = "<group>"; };
 		B9FCE3331612304900C5F3F2 /* SplashScreen_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen_Background.png; sourceTree = "<group>"; };
 		B9FCE3341612304900C5F3F2 /* SplashScreen2_Cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen2_Cover.png; sourceTree = "<group>"; };
@@ -470,6 +486,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9CD12E516604964004E27A0 /* EventKit.framework in Frameworks */,
 				B95FE8C11655943A00352210 /* CoreData.framework in Frameworks */,
 				B914C34416314057007D14F2 /* libz.dylib in Frameworks */,
 				B9288194162639DC0070A7C1 /* MapKit.framework in Frameworks */,
@@ -521,6 +538,8 @@
 				B91BDB331621411B006A472F /* RegPapers.xib */,
 				B9EE8D6616239707007DEB5A /* DataRegPapers.h */,
 				B9EE8D6716239707007DEB5A /* DataRegPapers.m */,
+				B9FC65A2165DA4230085011B /* ImageViewerScrollView.h */,
+				B9FC65A3165DA4230085011B /* ImageViewerScrollView.m */,
 			);
 			name = RecordsView;
 			sourceTree = "<group>";
@@ -818,8 +837,8 @@
 		B95FE8AD165592CB00352210 /* ModelSubclasses */ = {
 			isa = PBXGroup;
 			children = (
-				B921A5FF165C2F6B001992A3 /* DB_Calendar_Dates.h */,
-				B921A600165C2F6B001992A3 /* DB_Calendar_Dates.m */,
+				B908C2B01660578700B81945 /* DB_Calendar_Dates.h */,
+				B908C2B11660578700B81945 /* DB_Calendar_Dates.m */,
 				B9664D541658CCE20042E1FE /* DB_Performance.h */,
 				B9664D551658CCE20042E1FE /* DB_Performance.m */,
 				B9664D501658CCE10042E1FE /* DB_Registration_Papers.h */,
@@ -835,6 +854,7 @@
 		B9C3351D1606CB60002E2AD4 = {
 			isa = PBXGroup;
 			children = (
+				B9CD12E416604964004E27A0 /* EventKit.framework */,
 				B95FE8C01655943A00352210 /* CoreData.framework */,
 				B914C34316314057007D14F2 /* libz.dylib */,
 				B9288193162639DC0070A7C1 /* MapKit.framework */,
@@ -910,6 +930,8 @@
 				B92881BC162684480070A7C1 /* CalendarListViewController.h */,
 				B92881BD1626844B0070A7C1 /* CalendarListViewController.m */,
 				B95FE8A91655874300352210 /* ShowHorseModel.xcdatamodeld */,
+				B921A602165C801C001992A3 /* RecordsImageViewerViewController.h */,
+				B921A603165C801C001992A3 /* RecordsImageViewerViewController.m */,
 			);
 			path = ShowHorse;
 			sourceTree = "<group>";
@@ -944,6 +966,7 @@
 		B9D5C7E6160EBA4E00F8FACB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B9CD12E2165ED44D004E27A0 /* Add_Photo.png */,
 				B92881B7162647E90070A7C1 /* Events */,
 				B9287FFA1624E3210070A7C1 /* Checklist */,
 				B9F541E8161518CF00D9AAC6 /* Records */,
@@ -980,6 +1003,8 @@
 		B9F541CB1613C8EA00D9AAC6 /* ToolBar */ = {
 			isa = PBXGroup;
 			children = (
+				B9CD12DF165ED307004E27A0 /* ToolBar_Horse2.png */,
+				B9FC65A8165ED0C40085011B /* ToolBar_Horse.png */,
 				B9F541DB1613FB9E00D9AAC6 /* ToolBar_CheckList.png */,
 				B9F541DD1613FECE00D9AAC6 /* ToolBar_Calendar.png */,
 				B9F541D31613F0CF00D9AAC6 /* ToolBar_Background.png */,
@@ -1003,6 +1028,7 @@
 		B9FCE3321612300700C5F3F2 /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
+				B9FC65A6165ECD110085011B /* Enter_Button.png */,
 				B9FCE36B1612916500C5F3F2 /* SignIn_Button.png */,
 				B9FCE36C1612916500C5F3F2 /* SignUp_Button.png */,
 				B9FCE3331612304900C5F3F2 /* SplashScreen_Background.png */,
@@ -1121,6 +1147,10 @@
 				B928150D162E35ED00140E7C /* OverlayViewController.xib in Resources */,
 				B928150F162E36D900140E7C /* AddCheckListItem.xib in Resources */,
 				B928151E162F5DEA00140E7C /* TDDatePickerController.xib in Resources */,
+				B9FC65A7165ECD110085011B /* Enter_Button.png in Resources */,
+				B9FC65A9165ED0C40085011B /* ToolBar_Horse.png in Resources */,
+				B9CD12E0165ED307004E27A0 /* ToolBar_Horse2.png in Resources */,
+				B9CD12E3165ED44D004E27A0 /* Add_Photo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,7 +1259,9 @@
 				B95FE8E51655987400352210 /* DB_Records.m in Sources */,
 				B9664D521658CCE10042E1FE /* DB_Registration_Papers.m in Sources */,
 				B9664D561658CCE20042E1FE /* DB_Performance.m in Sources */,
-				B921A601165C2F6B001992A3 /* DB_Calendar_Dates.m in Sources */,
+				B921A604165C801D001992A3 /* RecordsImageViewerViewController.m in Sources */,
+				B9FC65A4165DA4230085011B /* ImageViewerScrollView.m in Sources */,
+				B908C2B21660578700B81945 /* DB_Calendar_Dates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

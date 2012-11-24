@@ -57,5 +57,5 @@
 @property (weak, nonatomic) IBOutlet MGScrollView *scrollPapers;
 @property (weak, nonatomic) IBOutlet UIView *vwRegPapers;
 @property (nonatomic) int curentselectedindex;
-
+@property (strong,nonatomic) UIImage* globalimageviewed;
 @end
