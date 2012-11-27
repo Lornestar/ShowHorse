@@ -39,6 +39,7 @@
     appdel = [UIApplication sharedApplication].delegate;
     tableData = appdel.listdataCalendarDates;
     datacalendardates = [[DataCalendarDates alloc]init];
+    tblview.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"App_Background.png"]];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

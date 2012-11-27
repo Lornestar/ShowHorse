@@ -15,7 +15,7 @@
 
 
 @implementation CalendarAddEventPopup
-@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar,btnCreateEvent,vwdatepicker,chosendate,thedatepicker,vwthedatepicker,df, btnDelete,globalcurrentdateselected;
+@synthesize vwCalendarAddEvent,txtEventDate,txtEventDescription,txtEventTitle,globaldatacalendar,btnCreateEvent,vwdatepicker,chosendate,thedatepicker,vwthedatepicker,df, btnDelete, imgBackground,globalcurrentdateselected,txtEventURL;
 
 
 - (IBAction)btnDateCancelClicked:(id)sender {
@@ -42,6 +42,9 @@
     [UIView commitAnimations];
     
     thedatepicker.date = globalcurrentdateselected;
+    if (globaldatacalendar.EventDate){
+        thedatepicker.date = globaldatacalendar.EventDate;
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj currentdateselected:(NSDate*)currentdateselected
@@ -51,7 +54,7 @@
 		CGFloat colors[8] = BLACK_BAR_COMPONENTS;
 		[self.titleBar setColorComponents:colors];
 		self.headerLabel.text = title;
-        [self setTitleBarHeight:15];
+        [self setTitleBarHeight:0];
         [self headerLabel].font = [UIFont boldSystemFontOfSize:20];
         self.margin = UIEdgeInsetsMake(15, 15, 0, 15);
         self.padding = UIEdgeInsetsMake(5, 5, 5, 5);
@@ -62,6 +65,7 @@
         
         //Reg Papers
         [[NSBundle mainBundle]  loadNibNamed:@"CalendarAddEvent" owner:self options:nil];
+        self.contentView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"App_Background.png"]];
         [self.contentView addSubview:vwCalendarAddEvent];
         [self.contentView addSubview:vwthedatepicker];
         [txtEventTitle becomeFirstResponder];
@@ -76,6 +80,9 @@
             txtEventTitle.text = calendarobj.EventTitle;
             txtEventDescription.text = calendarobj.EventDescription;
             txtEventDate.text = [df stringFromDate:calendarobj.EventDate];
+            thedatepicker.date = calendarobj.EventDate;
+            chosendate = calendarobj.EventDate;
+            txtEventURL.text = calendarobj.EventURL;
             //btnCreateEvent.titleLabel.text = @"Save Event";
             btnDelete.hidden = NO;
             [btnDelete setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -108,6 +115,7 @@
     tempcal.EventTitle = txtEventTitle.text;
     tempcal.EventDescription = txtEventDescription.text;
     tempcal.EventDate = chosendate;
+    tempcal.EventURL = txtEventURL.text;
     
     if ([delegate respondsToSelector:@selector(AddCalendars:)]) {
         [delegate performSelector:@selector(AddCalendars:) withObject:tempcal];
@@ -166,6 +174,18 @@
         // Or perhaps someone is listening for notifications
     }
 
+}
+
+- (IBAction)txtEventTitleClicked:(id)sender {
+    [self resetdatepicker];
+}
+
+- (IBAction)txtEventURLClicked:(id)sender {
+    [self resetdatepicker];
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    [self resetdatepicker];
 }
 
 @end

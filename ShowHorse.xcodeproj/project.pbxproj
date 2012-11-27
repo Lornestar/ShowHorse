@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B905EFF416217DA000F60820 /* tick.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B905EFF316217DA000F60820 /* tick.aiff */; };
-		B908C2B21660578700B81945 /* DB_Calendar_Dates.m in Sources */ = {isa = PBXBuildFile; fileRef = B908C2B11660578700B81945 /* DB_Calendar_Dates.m */; };
 		B90A2EFF16119BD2003BA331 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90A2EFE16119BD2003BA331 /* CFNetwork.framework */; };
 		B9140CC716163FF600A3C02D /* LRSlidingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9140CC616163FF600A3C02D /* LRSlidingTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B9140CCA161642A600A3C02D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9140CC9161642A600A3C02D /* Default-568h@2x.png */; };
@@ -145,6 +144,7 @@
 		B9CD12E0165ED307004E27A0 /* ToolBar_Horse2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CD12DF165ED307004E27A0 /* ToolBar_Horse2.png */; };
 		B9CD12E3165ED44D004E27A0 /* Add_Photo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CD12E2165ED44D004E27A0 /* Add_Photo.png */; };
 		B9CD12E516604964004E27A0 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CD12E416604964004E27A0 /* EventKit.framework */; };
+		B9D459271661D3B70086F8A4 /* DB_Calendar_Dates.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D459261661D3B70086F8A4 /* DB_Calendar_Dates.m */; };
 		B9D486B4160EA8AE00811B80 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D486B3160EA8AE00811B80 /* AudioToolbox.framework */; };
 		B9D486BD160EA90000811B80 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D486B6160EA90000811B80 /* libsqlite3.dylib */; };
 		B9D486BE160EA90000811B80 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D486B7160EA90000811B80 /* libz.1.1.3.dylib */; };
@@ -192,8 +192,6 @@
 
 /* Begin PBXFileReference section */
 		B905EFF316217DA000F60820 /* tick.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = tick.aiff; sourceTree = "<group>"; };
-		B908C2B01660578700B81945 /* DB_Calendar_Dates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Calendar_Dates.h; sourceTree = "<group>"; };
-		B908C2B11660578700B81945 /* DB_Calendar_Dates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Calendar_Dates.m; sourceTree = "<group>"; };
 		B90A2EFE16119BD2003BA331 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B9140CC516163FF600A3C02D /* LRSlidingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSlidingTableViewCell.h; sourceTree = "<group>"; };
 		B9140CC616163FF600A3C02D /* LRSlidingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSlidingTableViewCell.m; sourceTree = "<group>"; };
@@ -428,6 +426,8 @@
 		B9CD12DF165ED307004E27A0 /* ToolBar_Horse2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolBar_Horse2.png; sourceTree = "<group>"; };
 		B9CD12E2165ED44D004E27A0 /* Add_Photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Add_Photo.png; sourceTree = "<group>"; };
 		B9CD12E416604964004E27A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		B9D459251661D3B70086F8A4 /* DB_Calendar_Dates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB_Calendar_Dates.h; sourceTree = "<group>"; };
+		B9D459261661D3B70086F8A4 /* DB_Calendar_Dates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB_Calendar_Dates.m; sourceTree = "<group>"; };
 		B9D486B3160EA8AE00811B80 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B9D486B6160EA90000811B80 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B9D486B7160EA90000811B80 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
@@ -837,8 +837,8 @@
 		B95FE8AD165592CB00352210 /* ModelSubclasses */ = {
 			isa = PBXGroup;
 			children = (
-				B908C2B01660578700B81945 /* DB_Calendar_Dates.h */,
-				B908C2B11660578700B81945 /* DB_Calendar_Dates.m */,
+				B9D459251661D3B70086F8A4 /* DB_Calendar_Dates.h */,
+				B9D459261661D3B70086F8A4 /* DB_Calendar_Dates.m */,
 				B9664D541658CCE20042E1FE /* DB_Performance.h */,
 				B9664D551658CCE20042E1FE /* DB_Performance.m */,
 				B9664D501658CCE10042E1FE /* DB_Registration_Papers.h */,
@@ -1261,7 +1261,7 @@
 				B9664D561658CCE20042E1FE /* DB_Performance.m in Sources */,
 				B921A604165C801D001992A3 /* RecordsImageViewerViewController.m in Sources */,
 				B9FC65A4165DA4230085011B /* ImageViewerScrollView.m in Sources */,
-				B908C2B21660578700B81945 /* DB_Calendar_Dates.m in Sources */,
+				B9D459271661D3B70086F8A4 /* DB_Calendar_Dates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,7 +1364,7 @@
 		B9C335531606CB61002E2AD4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lorne Lantz";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dentonminster pty ltd";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1381,7 +1381,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A453C2B2-4198-4923-95F0-69008A1C6F76";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0B1A3D98-556E-4352-81A0-96D96CA5FD9E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

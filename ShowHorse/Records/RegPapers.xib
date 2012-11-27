@@ -15,6 +15,7 @@
 			<string>IBUIBarButtonItem</string>
 			<string>IBUIButton</string>
 			<string>IBUIImageView</string>
+			<string>IBUILabel</string>
 			<string>IBUIToolbar</string>
 			<string>IBUIView</string>
 		</array>
@@ -41,9 +42,10 @@
 					<object class="IBUIImageView" id="979553839">
 						<reference key="NSNextResponder" ref="730161940"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{280, 375}</string>
+						<string key="NSFrameSize">{288, 390}</string>
 						<reference key="NSSuperview" ref="730161940"/>
-						<reference key="NSNextKeyView" ref="1058480314"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="91634858"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -60,8 +62,9 @@
 							<object class="IBUIButton" id="318017081">
 								<reference key="NSNextResponder" ref="923624578"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{164, 7}, {104, 30}}</string>
+								<string key="NSFrame">{{172, 7}, {104, 30}}</string>
 								<reference key="NSSuperview" ref="923624578"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -82,15 +85,16 @@
 									<int key="traits">2</int>
 									<double key="pointSize">15</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="73208849">
+								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
 						</array>
-						<string key="NSFrame">{{0, 330}, {280, 44}}</string>
+						<string key="NSFrame">{{0, 345}, {288, 44}}</string>
 						<reference key="NSSuperview" ref="730161940"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="318017081"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -127,8 +131,9 @@
 					<object class="IBUIButton" id="1058480314">
 						<reference key="NSNextResponder" ref="730161940"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{179, 14}, {91, 27}}</string>
+						<string key="NSFrame">{{147, 34}, {126, 37}}</string>
 						<reference key="NSSuperview" ref="730161940"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="923624578"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -149,13 +154,50 @@
 						<reference key="IBUINormalTitleShadowColor" ref="99383577"/>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
-							<double key="pointSize">15</double>
+							<double key="pointSize">19</double>
 						</object>
-						<reference key="IBUIFont" ref="73208849"/>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">19</double>
+							<int key="NSfFlags">16</int>
+						</object>
+					</object>
+					<object class="IBUILabel" id="91634858">
+						<reference key="NSNextResponder" ref="730161940"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{77, 5}, {126, 21}}</string>
+						<reference key="NSSuperview" ref="730161940"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="1058480314"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<string key="IBUIText">Add Photo</string>
+						<object class="NSColor" key="IBUITextColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC44OTAxOTYwNzg0IDAuMDI3NDUwOTgwMzkgMC41MzMzMzMzMzMzAA</bytes>
+						</object>
+						<nil key="IBUIHighlightedColor"/>
+						<int key="IBUIBaselineAdjustment">0</int>
+						<int key="IBUITextAlignment">1</int>
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
+							<int key="type">2</int>
+							<double key="pointSize">17</double>
+						</object>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">17</double>
+							<int key="NSfFlags">16</int>
+						</object>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 				</array>
-				<string key="NSFrameSize">{280, 375}</string>
+				<string key="NSFrameSize">{288, 390}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="979553839"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -194,6 +236,14 @@
 						<reference key="destination" ref="1058480314"/>
 					</object>
 					<int key="connectionID">60</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblAddPhoto</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="91634858"/>
+					</object>
+					<int key="connectionID">63</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -253,9 +303,10 @@
 						<int key="objectID">4</int>
 						<reference key="object" ref="730161940"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="979553839"/>
 							<reference ref="923624578"/>
 							<reference ref="1058480314"/>
+							<reference ref="979553839"/>
+							<reference ref="91634858"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -309,6 +360,11 @@
 						<reference key="object" ref="1058480314"/>
 						<reference key="parent" ref="730161940"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">62</int>
+						<reference key="object" ref="91634858"/>
+						<reference key="parent" ref="730161940"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -327,14 +383,185 @@
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="55.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="59.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="62.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">61</int>
+			<int key="maxID">63</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">PerformancePopup</string>
+					<string key="superclassName">UATitledModalPanel</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="btnCancelClick:">id</string>
+						<string key="btnDeletePerformanceClicked:">id</string>
+						<string key="btnFullScreenClicked:">id</string>
+						<string key="btnPhotoLibraryClick:">id</string>
+						<string key="btnSaveClick:">id</string>
+						<string key="btnSavePerformanceClicked:">id</string>
+						<string key="btnSelectDateClick:">id</string>
+						<string key="btnTakePhotoClick:">id</string>
+						<string key="txtEditFieldDone:">id</string>
+						<string key="txtEditFieldTouch:">id</string>
+						<string key="txteventdateeditingbegin:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="btnCancelClick:">
+							<string key="name">btnCancelClick:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnDeletePerformanceClicked:">
+							<string key="name">btnDeletePerformanceClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnFullScreenClicked:">
+							<string key="name">btnFullScreenClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnPhotoLibraryClick:">
+							<string key="name">btnPhotoLibraryClick:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnSaveClick:">
+							<string key="name">btnSaveClick:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnSavePerformanceClicked:">
+							<string key="name">btnSavePerformanceClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnSelectDateClick:">
+							<string key="name">btnSelectDateClick:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnTakePhotoClick:">
+							<string key="name">btnTakePhotoClick:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="txtEditFieldDone:">
+							<string key="name">txtEditFieldDone:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="txtEditFieldTouch:">
+							<string key="name">txtEditFieldTouch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="txteventdateeditingbegin:">
+							<string key="name">txteventdateeditingbegin:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="RegPapersImage">UIImageView</string>
+						<string key="btnDeletePerformance">UIButton</string>
+						<string key="btnFullScreen">UIButton</string>
+						<string key="btnSavePhoto">UIButton</string>
+						<string key="lblAddPhoto">UILabel</string>
+						<string key="thedatepicker">UIDatePicker</string>
+						<string key="txtclassdescription">UITextField</string>
+						<string key="txtcompetitors">UITextField</string>
+						<string key="txteventdate">UITextField</string>
+						<string key="txteventname">UITextField</string>
+						<string key="txtjudge">UITextField</string>
+						<string key="txtplacing">UITextField</string>
+						<string key="txtscore">UITextField</string>
+						<string key="viewLoadedFromXib">UIView</string>
+						<string key="viewLoadedFromXibRegPapers">UIView</string>
+						<string key="vwtheDatePicker">UIView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="RegPapersImage">
+							<string key="name">RegPapersImage</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="btnDeletePerformance">
+							<string key="name">btnDeletePerformance</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="btnFullScreen">
+							<string key="name">btnFullScreen</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="btnSavePhoto">
+							<string key="name">btnSavePhoto</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblAddPhoto">
+							<string key="name">lblAddPhoto</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="thedatepicker">
+							<string key="name">thedatepicker</string>
+							<string key="candidateClassName">UIDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txtclassdescription">
+							<string key="name">txtclassdescription</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txtcompetitors">
+							<string key="name">txtcompetitors</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txteventdate">
+							<string key="name">txteventdate</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txteventname">
+							<string key="name">txteventname</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txtjudge">
+							<string key="name">txtjudge</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txtplacing">
+							<string key="name">txtplacing</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txtscore">
+							<string key="name">txtscore</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewLoadedFromXib">
+							<string key="name">viewLoadedFromXib</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewLoadedFromXibRegPapers">
+							<string key="name">viewLoadedFromXibRegPapers</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="vwtheDatePicker">
+							<string key="name">vwtheDatePicker</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/PerformancePopup.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UAModalPanel</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/UAModalPanel.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UATitledModalPanel</string>
+					<string key="superclassName">UAModalPanel</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/UATitledModalPanel.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

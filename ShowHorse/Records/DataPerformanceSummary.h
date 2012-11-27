@@ -14,5 +14,5 @@
 }
 -(Performances*)AddPerformance:(Performances*)PerformanceObject currentselectedindex:(int)currentselectedindex;
 - (Performances *)objectInListAtIndex:(unsigned)theIndex;
--(void)DeleteRegPapers:(Performances*)PerformanceObject;
+-(void)DeleteRegPapers:(Performances*)PerformanceObject currentselectedindex:(int)currentselectedindex;
 @end

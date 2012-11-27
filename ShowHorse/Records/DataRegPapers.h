@@ -13,5 +13,5 @@
 
 -(RegistrationPapers*)AddRegPapers:(RegistrationPapers*)RegPapersObject currentselectedindex:(int)currentselectedindex;
 - (RegistrationPapers *)objectInListAtIndex:(unsigned)theIndex;
--(void)DeleteRegPapers:(RegistrationPapers*)RegPapersObject;
+-(void)DeleteRegPapers:(RegistrationPapers*)RegPapersObject currentselectedindex:(int)currentselectedindex;
 @end

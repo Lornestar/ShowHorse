@@ -55,5 +55,6 @@
 - (IBAction)txteventdateeditingbegin:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *btnFullScreen;
 - (IBAction)btnFullScreenClicked:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *lblAddPhoto;
 
 @end

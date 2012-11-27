@@ -78,7 +78,7 @@
     return RegPapersObject;
 }
 
--(void)DeleteRegPapers:(RegistrationPapers*)RegPapersObject{
+-(void)DeleteRegPapers:(RegistrationPapers*)RegPapersObject currentselectedindex:(int)currentselectedindex{
     /*
         AppDelegate *appdel = [UIApplication sharedApplication].delegate;
         [appdel.listdataPapers removeObjectAtIndex:RegPapersObject.listindex];
@@ -92,10 +92,11 @@
     NSError *error = nil;
     NSArray *checklistitems = [appdel.ShowHorseDatabase.managedObjectContext executeFetchRequest:request error:&error];
     DB_Registration_Papers *dbchecklist = [checklistitems lastObject];
-    [appdel.ShowHorseDatabase.managedObjectContext  deleteObject:dbchecklist];
+    [appdel.ShowHorseDatabase.managedObjectContext deleteObject:dbchecklist];
     [appdel SaveDatabase];
     
-    [appdel.listdataPapers removeObjectAtIndex:RegPapersObject.listindex];
+    currentselectedindex = [appdel.listdataPapers indexOfObject:RegPapersObject];
+    [appdel.listdataPapers removeObjectAtIndex:currentselectedindex];
 }
 
 - (RegistrationPapers *)objectInListAtIndex:(unsigned)theIndex;

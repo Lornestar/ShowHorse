@@ -16,7 +16,7 @@
 
 @implementation PerformancePopup
 
-@synthesize txteventdate,txteventname,txtclassdescription,txtplacing,txtjudge,txtcompetitors,txtscore,globalPerformanceObject,RegPapersImage,overlayViewController,btnSavePhoto,globalPhoto,globalRegPapersObject,thedatepicker,vwtheDatePicker,df,chosendate,btnDeletePerformance,btnFullScreen;
+@synthesize txteventdate,txteventname,txtclassdescription,txtplacing,txtjudge,txtcompetitors,txtscore,globalPerformanceObject,RegPapersImage,overlayViewController,btnSavePhoto,globalPhoto,globalRegPapersObject,thedatepicker,vwtheDatePicker,df,chosendate,btnDeletePerformance,btnFullScreen,lblAddPhoto;
 
 -(void)resetdatepicker{
     [UIView beginAnimations:nil context:nil];
@@ -35,6 +35,7 @@
     
     [self resetdatepicker];
 
+    [txteventname becomeFirstResponder];
 }
 
 - (IBAction)btnCancelClick:(id)sender {
@@ -139,16 +140,18 @@
 		[self.contentView addSubview:v];*/
         
         if (nibid == 0){
-            [self setTitleBarHeight:30];
+            [self setTitleBarHeight:0];
             [self headerLabel].font = [UIFont boldSystemFontOfSize:20];
-            self.margin = UIEdgeInsetsMake(15, 15, 15, 15);
+            self.margin = UIEdgeInsetsMake(15, 15, 0, 15);
             self.padding = UIEdgeInsetsMake(5, 5, 5, 5);
+            
             
             //Performances
             [[NSBundle mainBundle]  loadNibNamed:@"UAExampleView" owner:self options:nil];
             [self.contentView addSubview:viewLoadedFromXib];
             [self.contentView addSubview:vwtheDatePicker];
             vwtheDatePicker.center = CGPointMake(140, 600);
+            self.contentView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"App_Background.png"]];
             
             if (PerformanceObject){
                 //Existing performance object
@@ -167,14 +170,15 @@
             }
         }
         else if (nibid ==1){
-            [self setTitleBarHeight:15];
+            [self setTitleBarHeight:0];
             [self headerLabel].font = [UIFont boldSystemFontOfSize:20];
             self.margin = UIEdgeInsetsMake(15, 15, 0, 15);
-            self.padding = UIEdgeInsetsMake(5, 5, 5, 5);
+            self.padding = UIEdgeInsetsMake(1, 1, 1, 1);
             
             //Reg Papers
             [[NSBundle mainBundle]  loadNibNamed:@"RegPapers" owner:self options:nil];
             [self.contentView addSubview:viewLoadedFromXibRegPapers];
+            self.contentView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"App_Background.png"]];
          
             self.capturedImages = [NSMutableArray array];
             
@@ -190,6 +194,7 @@
                 [btnSavePhoto setTitle:@"Delete" forState:UIControlStateHighlighted];
                 [btnSavePhoto setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [btnSavePhoto setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+                lblAddPhoto.hidden= YES;
                 
             }
             else{
@@ -282,7 +287,7 @@
         [txtscore resignFirstResponder];
     }*/
     
-    [self MoveView:330];
+    [self MoveView:360];
     [txtscore resignFirstResponder];
 }
 
@@ -291,7 +296,7 @@
     UITextField *txtfield = (UITextField*)sender;
     if ([txtfield.placeholder isEqualToString:@"Event Date"]){
         //move next
-        [self MoveView:330];
+        [self MoveView:360];
         [txteventname resignFirstResponder];
         //CalendarViewController *cvc = (CalendarViewController*)delegate;
         //[cvc presentSemiModalViewController:vwdatepicker];
@@ -308,31 +313,31 @@
     }
     else if ([txtfield.placeholder isEqualToString:@"Event Name"]){
         //move next
-        [self MoveView:300];
+        [self MoveView:330];
       }
     else if ([txtfield.placeholder isEqualToString:@"Class Description"]){
         //move next
-        [self MoveView:270];
+        [self MoveView:300];
         
     }
     else if ([txtfield.placeholder isEqualToString:@"Placing"]){
         //move next
-        [self MoveView:240];
+        [self MoveView:270];
         
     }
     else if ([txtfield.placeholder isEqualToString:@"Judge Name"]){
         //move next
-        [self MoveView:210];
+        [self MoveView:240];
         
     }
     else if ([txtfield.placeholder isEqualToString:@"No. Competitors"]){
         //move next
-        [self MoveView:180];
+        [self MoveView:210];
         
     }
     else if ([txtfield.placeholder isEqualToString:@"Score"]){
         //move next
-        [self MoveView:150];
+        [self MoveView:180];
     }
 
 }
@@ -430,7 +435,7 @@
 {
     RecordsViewController *rvc = delegate;
     [rvc dismissModalViewControllerAnimated:YES];
-    
+    lblAddPhoto.hidden= YES;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

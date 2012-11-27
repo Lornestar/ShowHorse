@@ -160,7 +160,7 @@
         tempperf.Competitors = currentrow.competitors;
         tempperf.Score = currentrow.score;
         tempperf.PerformanceObject = currentrow;
-        tempperf.listindex = listdataPerformances.count;
+        tempperf.listindex = [currentrow.listindex intValue];
         [listdataPerformances addObject:tempperf];
     }
     
@@ -211,7 +211,7 @@
         UIImage *imgtemp = [[UIImage alloc] initWithData:tempdata];
         regtemp.Papers = imgtemp;
         regtemp.PapersObject = currentrow;
-        regtemp.listindex = listdataPapers.count;
+        regtemp.listindex = [currentrow.listindex intValue];
         [listdataPapers addObject:regtemp];
     }
     
@@ -275,6 +275,8 @@
         caltemp.listindex = [currentrow.listindex intValue];
         caltemp.CalendarDatesObject = currentrow;
         caltemp.EventID = currentrow.eventid;
+        caltemp.EventURL = currentrow.eventurl;
+        
         [listdataCalendarDates addObject:caltemp];
     }
     

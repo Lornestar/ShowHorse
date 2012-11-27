@@ -42,7 +42,7 @@
 @synthesize hidingpoint, horsepoint, riderpoint, performpoint, registerpoint;
 @synthesize txtEditField;
 @synthesize appdelegate;
-@synthesize tblviewperformance,CurrentSelection,btnAddPerformance, scrollPapers, vwRegPapers,curentselectedindex,globalimageviewed;
+@synthesize tblviewperformance,CurrentSelection,btnAddPerformance, scrollPapers, vwRegPapers,curentselectedindex,globalimageviewed,isediting;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -93,7 +93,7 @@
     photosGrid = [MGBox boxWithSize:photosGridSize];
     photosGrid.contentLayoutMode = MGLayoutGridStyle;
     [scrollPapers.boxes addObject:photosGrid];
-    
+    isediting = NO;
 }
 
 
@@ -144,6 +144,9 @@
         lblAnswer.text = recordAtIndex.Answer;
         if (recordAtIndex.Answer.length>0){
             txtedit.text = recordAtIndex.Answer;
+        }
+        else{
+            txtedit.text = @"";
         }
         cell.contentView.backgroundColor = [UIColor lightGrayColor];
     }
@@ -221,27 +224,31 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ((CurrentSelection ==1) || (CurrentSelection == 2)){
-        UITableViewCell *thecell = [tblview cellForRowAtIndexPath:indexPath];
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.5];
-        //[UIView setAnimationDelay:0.25];
-        
-        //thecell.alpha = 0;
-        UIView *tempview = (UIView *)[thecell.contentView viewWithTag:2];
-        tempview.center = CGPointMake(tempview.center.x + 300, tempview.center.y);
-        
-        double offset = ((double)33 * (double)indexPath.row);
-        if (offset > 265){
-            offset = 265;
+        if (isediting == NO){
+            UITableViewCell *thecell = [tblview cellForRowAtIndexPath:indexPath];
+            
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.5];
+            //[UIView setAnimationDelay:0.25];
+            
+            //thecell.alpha = 0;
+            UIView *tempview = (UIView *)[thecell.contentView viewWithTag:2];
+            tempview.center = CGPointMake(tempview.center.x + 300, tempview.center.y);
+            
+            double offset = ((double)33 * (double)indexPath.row);
+            if (offset > 166){
+                offset = 166;
+            }
+            //tblview.center = CGPointMake(tblview.center.x, tblview.center.y - offset);
+            tblview.frame = CGRectMake(tblview.frame.origin.x, tblview.frame.origin.y, tblview.frame.size.width, tblview.frame.size.height - offset);
+            [tblview scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [UIView commitAnimations];
+            
+            UITextField *txtfield = (UITextField*)[thecell.contentView viewWithTag:3];
+            [txtfield becomeFirstResponder];
+            
+            isediting = YES;
         }
-        //tblview.center = CGPointMake(tblview.center.x, tblview.center.y - offset);
-        tblview.frame = CGRectMake(tblview.frame.origin.x, tblview.frame.origin.y, tblview.frame.size.width, tblview.frame.size.height - offset);
-        [tblview scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        [UIView commitAnimations];
-        
-        UITextField *txtfield = (UITextField*)[thecell.contentView viewWithTag:3];
-        [txtfield becomeFirstResponder];
     }
     else{
         //Selected Performance
@@ -432,6 +439,8 @@
 
 -(void)CloseEditField:(id)sender{
     
+    isediting = NO;
+    
     UIButton *thebutton = (UIButton*)sender;
     UITableViewCell *cell = [[thebutton superview]superview];
     
@@ -442,6 +451,9 @@
     lblAnswer.text = txtfield.text;
     lblAnswer.alpha = 0;
     
+    tblview.frame = CGRectMake(20, 113, tblview.frame.size.width, 298);
+    
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5];
     //[UIView setAnimationDelay:0.25];
@@ -450,12 +462,11 @@
     UIView *tempview = (UIView *)[cell.contentView viewWithTag:2];
     tempview.center = CGPointMake(tempview.center.x - 300, tempview.center.y);
     lblAnswer.alpha = 1;
-    
-    tblview.frame = CGRectMake(tblview.frame.origin.x, tblview.frame.origin.y, tblview.frame.size.width, 298);
-    [tblview scrollToRowAtIndexPath:0 atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    
+        
     
     [UIView commitAnimations];
+    
+    [tblview setContentOffset:CGPointZero animated:YES];// scrollToRowAtIndexPath:0 atScrollPosition:UITableViewScrollPositionTop animated:YES];
     
     NSIndexPath *path= [tblview indexPathForCell:cell];
     [dataHorseSummary updateobjectInListAtIndex:path.row updatevalue:txtfield.text];
@@ -540,13 +551,13 @@
 }
 
 -(void)DeletePerformance:(Performances*)PerformanceObject{
-    [dataPerformanceSummary DeleteRegPapers:PerformanceObject];
+    [dataPerformanceSummary DeleteRegPapers:PerformanceObject currentselectedindex:curentselectedindex];
     tableData = appdelegate.listdataPerformances;
     [tblviewperformance reloadData];
 }
 
 -(void)DeleteRegPapers:(RegistrationPapers*)regtemp{
-    [dataRegPapers DeleteRegPapers:regtemp];
+    [dataRegPapers DeleteRegPapers:regtemp currentselectedindex:curentselectedindex];
     [photosGrid layoutWithSpeed:0.3 completion:nil];
     [scrollPapers layoutWithSpeed:0.3 completion:nil];
     [self PhotogridReset];
@@ -596,7 +607,7 @@
     __block id bbox = box;
     box.onTap = ^{
         PerformancePopup *performancepopup = [[PerformancePopup alloc] initWithFrame:self.view.bounds title:@"Edit Photo" PerformanceObject:nil nibid:1 RegPapersObject:RegPapersObject];
-        curentselectedindex=i;
+        
         
         performancepopup.onClosePressed = ^(UAModalPanel* panel) {
             // [panel hide];

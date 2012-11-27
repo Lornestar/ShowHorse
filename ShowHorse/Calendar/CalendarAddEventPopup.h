@@ -11,7 +11,7 @@
 #import "DataCalendarDates.h"
 #import "TDDatePickerController.h"
 
-@interface CalendarAddEventPopup : UATitledModalPanel<OverlayViewControllerDelegate> {
+@interface CalendarAddEventPopup : UATitledModalPanel<OverlayViewControllerDelegate,UITextViewDelegate> {
     
 }
 @property (strong, nonatomic) IBOutlet UIView *vwCalendarAddEvent;
@@ -32,9 +32,16 @@
 
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title calendarobj:(CalendarDates*)calendarobj currentdateselected:(NSDate*)currentdateselected;
 
+@property (strong, nonatomic) IBOutlet UITextField *txtEventURL;
 @property (strong,nonatomic) NSDate *chosendate;
 @property (strong,nonatomic) NSDateFormatter *df;
 @property (strong, nonatomic) IBOutlet UIButton *btnDelete;
 - (IBAction)btnDeleteClicked:(id)sender;
 @property (strong, nonatomic) NSDate *globalcurrentdateselected;
+- (IBAction)txtEventTitleClicked:(id)sender;
+- (IBAction)txtEventURLClicked:(id)sender;
+
+
+@property (strong, nonatomic) IBOutlet UIImageView *imgBackground;
+
 @end

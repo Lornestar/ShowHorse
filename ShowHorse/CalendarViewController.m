@@ -10,6 +10,13 @@
 #import "CalendarAddEventPopup.h"
 #import "CalendarDates.h"
 #import "DataCalendarDates.h"
+#import <EventKit/EventKit.h>
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 @implementation CalendarViewController
 @synthesize dataArray, dataDictionary,calendar, datacalendardates, appdel,tblview,tableData,currentdateselected;
@@ -46,6 +53,16 @@
 	
     [self.navigationController setNavigationBarHidden:YES  animated:YES];
 	
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6")) {
+        EKEventStore *eventStore = [[EKEventStore alloc] init];
+        if([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]) {
+            [eventStore requestAccessToEntityType:EKEntityTypeEvent
+                                       completion:^(BOOL granted, NSError *error) {
+                                           
+                                       }];
+        }
+    }
 }
 
 -(void)updatetableData:(NSDate*)currentdate{
@@ -128,7 +145,9 @@
     UILabel *lbldesc = (UILabel*)[cell.contentView viewWithTag:2];
     lbldesc.text = tempdate.EventDescription;
     UILabel *lbldate = (UILabel*)[cell.contentView viewWithTag:3];
-    lbldate.text = [appdel.df stringFromDate:tempdate.EventDate];
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc]init];
+    [dateformatter setDateFormat:@"hh:mm a"];
+    lbldate.text = [dateformatter stringFromDate:tempdate.EventDate];
     return cell;
 	
 }

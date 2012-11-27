@@ -14,6 +14,8 @@
 #import <CoreData/CoreData.h>
 #import <EventKit/EventKit.h>
 
+
+
 @implementation DataCalendarDates
 
 
@@ -42,45 +44,17 @@
         [appdel.listdataCalendarDates setObject:CalendarDatesObject atIndexedSubscript:indexlocation];
     }
         
-    
-    //add to local calendar
     EKEventStore *eventStore = [[EKEventStore alloc] init];
     
-    //NSCalendar *calendar = [NSCalendar currentCalendar];
-    EKEvent *event;
+    //add to local calendar
     
+        
+    CalendarDatesObject.EventID = [self AddtoCalendar:CalendarDatesObject eventStore:eventStore];
     
-    
-    
-    if (CalendarDatesObject.EventID){
-        //eventid exists so update existing event in calendar
-        event = [eventStore eventWithIdentifier:CalendarDatesObject.EventID];
-    }
-    else{
-        //create new event from calendar
-        event = [EKEvent eventWithEventStore:eventStore];
-    }
-    
-    event.startDate = CalendarDatesObject.EventDate;
-    event.title = CalendarDatesObject.EventTitle;
-    event.endDate = [CalendarDatesObject.EventDate addTimeInterval:3600];
-    event.notes = CalendarDatesObject.EventDescription;
-    
-    [event setCalendar:[eventStore defaultCalendarForNewEvents]];
-    event.alarms = [NSArray arrayWithObject:[EKAlarm alarmWithAbsoluteDate:event.startDate]];
-    NSError *Eventerror = nil;
-    
-    BOOL result = [eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&Eventerror];
-    if (result){
-        CalendarDatesObject.EventID = event.eventIdentifier;
-        NSLog(@"Saved Event to event store. %@", event.eventIdentifier);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Event saved to your iPhone Calendar" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    else{
-        NSLog(@"Error saving event: %@", Eventerror);
-    }
-    
+    /*if (SYSTEM_VERSION_LESS_THAN(@"4.0")) {
+        ...
+    }*/
+        
     //Add to database
     DB_Calendar_Dates *dbchecklist = nil;
     
@@ -98,6 +72,7 @@
         [dbchecklist setValue:CalendarDatesObject.EventDate forKey:@"eventdate"];
         [dbchecklist setValue:CalendarDatesObject.EventTitle forKey:@"eventtitle"];
         [dbchecklist setValue:CalendarDatesObject.EventDescription forKey:@"eventdescription"];
+        [dbchecklist setValue:CalendarDatesObject.EventURL forKey:@"eventurl"];
         [dbchecklist setValue:CalendarDatesObject.EventID forKey:@"eventid"];
         [dbchecklist setValue:[NSNumber numberWithInt:CalendarDatesObject.listindex] forKey:@"listindex"];
     } else {
@@ -105,6 +80,7 @@
         [dbchecklist setValue:CalendarDatesObject.EventDate forKey:@"eventdate"];
         [dbchecklist setValue:CalendarDatesObject.EventTitle forKey:@"eventtitle"];
         [dbchecklist setValue:CalendarDatesObject.EventDescription forKey:@"eventdescription"];
+        [dbchecklist setValue:CalendarDatesObject.EventURL forKey:@"eventurl"];
         [dbchecklist setValue:[NSNumber numberWithInt:CalendarDatesObject.listindex] forKey:@"listindex"];
     }
     
@@ -131,6 +107,46 @@
     return CalendarDatesObject;
 }
 
+-(NSString*) AddtoCalendar:(CalendarDates*)CalendarDatesObject eventStore:(EKEventStore*)eventStore{
+        
+    //NSCalendar *calendar = [NSCalendar currentCalendar];
+    EKEvent *event;
+    
+    
+    
+    
+    if (CalendarDatesObject.EventID){
+        //eventid exists so update existing event in calendar
+        event = [eventStore eventWithIdentifier:CalendarDatesObject.EventID];
+    }
+    else{
+        //create new event from calendar
+        event = [EKEvent eventWithEventStore:eventStore];
+    }
+    
+    event.startDate = CalendarDatesObject.EventDate;
+    event.title = CalendarDatesObject.EventTitle;
+    event.endDate = [CalendarDatesObject.EventDate addTimeInterval:3600];
+    event.notes = CalendarDatesObject.EventDescription;
+    event.URL = [[NSURL alloc] initWithString:CalendarDatesObject.EventURL];
+    
+    [event setCalendar:[eventStore defaultCalendarForNewEvents]];
+    event.alarms = [NSArray arrayWithObject:[EKAlarm alarmWithRelativeOffset:-900]];
+    NSError *Eventerror = nil;
+    
+    BOOL result = [eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&Eventerror];
+    if (result){
+        CalendarDatesObject.EventID = event.eventIdentifier;
+        NSLog(@"Saved Event to event store. %@", event.eventIdentifier);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Event saved to your iPhone Calendar" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else{
+        NSLog(@"Error saving event: %@", Eventerror);
+    }
+
+    return event.eventIdentifier;
+}
 
 
 -(void)DeleteCalendarDates:(CalendarDates*)CalendarDatesObject{

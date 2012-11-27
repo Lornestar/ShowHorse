@@ -109,7 +109,7 @@
     return PerformanceObject;
 }
 
--(void)DeleteRegPapers:(Performances*)PerformanceObject{
+-(void)DeleteRegPapers:(Performances*)PerformanceObject currentselectedindex:(int)currentselectedindex{
     
     AppDelegate *appdel = [UIApplication sharedApplication].delegate;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DB_Performance"];
@@ -121,7 +121,7 @@
     [appdel.ShowHorseDatabase.managedObjectContext  deleteObject:dbchecklist];
     [appdel SaveDatabase];
     
-    [appdel.listdataPerformances removeObjectAtIndex:PerformanceObject.listindex];
+    [appdel.listdataPerformances removeObjectAtIndex:currentselectedindex];
 }
 
 - (Performances *)objectInListAtIndex:(unsigned)theIndex;

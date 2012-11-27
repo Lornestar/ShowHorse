@@ -9,5 +9,5 @@
 #import "CalendarDates.h"
 
 @implementation CalendarDates
-@synthesize EventDate,EventDescription,EventTitle, CalendarDatesObject,listindex,EventID;
+@synthesize EventDate,EventDescription,EventTitle, CalendarDatesObject,listindex,EventID,EventURL;
 @end

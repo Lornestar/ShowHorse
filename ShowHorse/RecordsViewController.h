@@ -58,4 +58,6 @@
 @property (weak, nonatomic) IBOutlet UIView *vwRegPapers;
 @property (nonatomic) int curentselectedindex;
 @property (strong,nonatomic) UIImage* globalimageviewed;
+
+@property (nonatomic) BOOL isediting;
 @end
